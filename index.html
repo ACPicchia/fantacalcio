@@ -928,6 +928,402 @@
 
         }
 
+    
+
+        /* ==========================================
+           RESPONSIVE DESIGN - TABLET / MOBILE
+        ========================================== */
+
+        /* Verhindert horizontales Überlaufen allgemein */
+        html, body {
+            max-width: 100%;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        /* Tablet */
+        @media (max-width: 1100px) {
+
+            .sidebar {
+                width: 220px;
+                padding: 16px 12px;
+            }
+
+            .sidebar-title {
+                font-size: 20px;
+            }
+
+            .menu-btn {
+                font-size: 13px;
+                padding: 11px 12px;
+            }
+
+            .main-content {
+                padding: 20px;
+            }
+
+            .container {
+                max-width: 100%;
+                padding: 24px;
+            }
+
+            .team-header {
+                gap: 14px;
+            }
+
+            .team-logo {
+                width: 72px;
+                height: 72px;
+            }
+
+            .roster-grid {
+                gap: 14px;
+            }
+
+            .role-box {
+                padding: 13px;
+            }
+
+            .player-card {
+                padding: 9px 10px;
+            }
+
+            .classifica-tabs {
+                justify-content: flex-start;
+            }
+        }
+
+
+        /* Smartphone / kleine Tablets */
+        @media (max-width: 850px) {
+
+            body {
+                min-height: 100vh;
+                height: auto;
+                overflow: auto;
+                display: block;
+            }
+
+            /* Sidebar wird zu horizontaler Navigation oben */
+            .sidebar {
+                position: sticky;
+                top: 0;
+                z-index: 1000;
+
+                width: 100%;
+                height: auto;
+
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+
+                gap: 8px;
+                padding: 10px;
+
+                overflow-x: auto;
+                overflow-y: hidden;
+
+                border-right: none;
+                border-bottom: 2px solid #334155;
+
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: thin;
+            }
+
+            .sidebar-title {
+                display: none;
+            }
+
+            .menu-btn {
+                flex: 0 0 auto;
+                min-width: auto;
+
+                padding: 10px 12px;
+
+                white-space: nowrap;
+
+                font-size: 12px;
+                border-radius: 8px;
+            }
+
+            .menu-btn:hover {
+                transform: none;
+            }
+
+            .main-content {
+                width: 100%;
+                min-height: calc(100vh - 64px);
+
+                display: block;
+
+                padding: 12px;
+                overflow: visible;
+            }
+
+            .container {
+                width: 100%;
+                max-width: 100%;
+
+                margin: 0;
+                padding: 16px;
+
+                border-width: 2px;
+                border-radius: 14px;
+            }
+
+            h1 {
+                font-size: 27px;
+                line-height: 1.1;
+                margin-bottom: 15px;
+            }
+
+            #countdown {
+                font-size: clamp(30px, 10vw, 44px);
+                margin: 18px 0;
+                overflow-wrap: anywhere;
+            }
+
+            #countdown.open {
+                font-size: clamp(27px, 9vw, 38px);
+            }
+
+            #transfer-window {
+                width: 100%;
+                max-width: 100%;
+
+                margin: 12px 0 16px;
+                padding: 12px;
+            }
+
+            .transfer-title {
+                font-size: 17px;
+            }
+
+            .transfer-dates {
+                font-size: 13px;
+                line-height: 1.5;
+            }
+
+            #transfer-remaining {
+                font-size: 12px;
+                line-height: 1.5;
+            }
+
+            #subtext {
+                font-size: 14px !important;
+                line-height: 1.5;
+            }
+
+            /* Home-Teamliste */
+            .team-list {
+                margin-top: 20px;
+                padding: 13px;
+            }
+
+            .team-row {
+                flex-direction: column;
+                align-items: flex-start;
+
+                gap: 4px;
+                padding: 9px 0;
+            }
+
+            .team-name {
+                white-space: normal;
+            }
+
+            .team-motto {
+                text-align: left;
+                font-size: 12px;
+                line-height: 1.4;
+            }
+
+            /* ACPicchia Kopf */
+            .team-header {
+                flex-direction: row;
+                align-items: center;
+
+                padding: 13px;
+                margin-bottom: 14px;
+            }
+
+            .team-logo {
+                width: 62px;
+                height: 62px;
+                flex-shrink: 0;
+            }
+
+            .team-header-text h3 {
+                font-size: 24px;
+            }
+
+            .team-header-text p {
+                font-size: 12px;
+            }
+
+            .credit-badge {
+                font-size: 11px;
+                padding: 5px 9px;
+            }
+
+            /* Kader auf Mobile untereinander */
+            .roster-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .role-box {
+                padding: 12px;
+                border-radius: 12px;
+            }
+
+            .role-title {
+                font-size: 20px;
+                margin-bottom: 10px;
+            }
+
+            .player-list {
+                gap: 7px;
+            }
+
+            .player-card {
+                min-height: 52px;
+                padding: 9px 10px;
+            }
+
+            .player-name {
+                font-size: 14px;
+            }
+
+            .player-team {
+                font-size: 11px;
+            }
+
+            .player-price {
+                min-width: 38px;
+                padding: 6px 7px;
+                font-size: 13px;
+            }
+
+            .lineup-note {
+                margin-top: 14px;
+                padding: 13px;
+                font-size: 13px;
+                line-height: 1.55;
+            }
+
+            /* Classifica Tabs */
+            .classifica-tabs {
+                width: 100%;
+
+                display: flex;
+                flex-wrap: nowrap;
+
+                justify-content: flex-start;
+
+                gap: 7px;
+                margin: 16px 0;
+
+                overflow-x: auto;
+
+                padding: 2px 2px 8px 2px;
+
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: thin;
+            }
+
+            .classifica-tab {
+                flex: 0 0 auto;
+                font-size: 11px;
+                padding: 9px 11px;
+            }
+
+            /* Tabelle horizontal scrollbar statt zusammendrücken */
+            .classifica-table-wrap {
+                width: 100%;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+
+                border-radius: 10px;
+            }
+
+            .classifica-table {
+                min-width: 720px;
+            }
+
+            .classifica-table th,
+            .classifica-table td {
+                padding: 9px 8px;
+                font-size: 12px;
+            }
+
+            .classifica-updated {
+                font-size: 11px;
+            }
+
+            .coming-soon-box {
+                padding: 22px 14px;
+            }
+
+            .coming-soon-title {
+                font-size: 25px;
+            }
+        }
+
+
+        /* Sehr kleine Smartphones */
+        @media (max-width: 480px) {
+
+            .sidebar {
+                padding: 8px;
+            }
+
+            .menu-btn {
+                padding: 9px 10px;
+                font-size: 11px;
+            }
+
+            .main-content {
+                padding: 8px;
+            }
+
+            .container {
+                padding: 12px;
+                border-radius: 12px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            .team-header {
+                align-items: flex-start;
+            }
+
+            .team-logo {
+                width: 54px;
+                height: 54px;
+            }
+
+            .team-header-text h3 {
+                font-size: 21px;
+            }
+
+            .role-title {
+                font-size: 18px;
+            }
+
+            .player-card {
+                min-height: 48px;
+            }
+
+            .classifica-table {
+                min-width: 680px;
+            }
+        }
+
     </style>
 
 </head>
