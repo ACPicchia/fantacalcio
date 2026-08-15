@@ -123,6 +123,26 @@
             text-shadow: 0 0 15px rgba(244, 63, 94, 0.6);
         }
 
+        /* Tabelle der Mottos auf der Hauptseite */
+        .team-list {
+            margin-top: 30px;
+            text-align: left;
+            background: #0f172a;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid #334155;
+        }
+        .team-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #1e293b;
+            font-size: 14px;
+        }
+        .team-row:last-child { border-bottom: none; }
+        .team-name { font-weight: bold; color: #38bdf8; }
+        .team-motto { color: #94a3b8; font-style: italic; }
+
         .coming-soon-box {
             padding: 40px;
             background: #0f172a;
@@ -171,7 +191,7 @@
     <div class="main-content">
         <div class="container">
 
-            <!-- SEITE 1: TIMER MERCATO -->
+            <!-- SEITE 1: TIMER MERCATO MIT MOTTOS -->
             <div id="home" class="page active">
                 <h1>FANTACALCIO 2026/27 ⚽</h1>
                 <h2 id="status">Il mercato sta per iniziare. Preparate i crediti!</h2>
@@ -182,6 +202,18 @@
 
                 <div id="meme-container">
                     <img class="meme-img" src="https://corriereobjects.it" alt="Galliani Condor">
+                </div>
+
+                <!-- Hier ist die vollständige Liste mit allen Mottos auf der Startseite -->
+                <div class="team-list">
+                    <div class="team-row"><span class="team-name">ACPicchia</span><span class="team-motto">"Gufare è un dovere!" 🦉</span></div>
+                    <div class="team-row"><span class="team-name">RC Ursus Urs</span><span class="team-motto">"Mai una gioia." 🐻</span></div>
+                    <div class="team-row"><span class="team-name">US Salento</span><span class="team-motto">"Lu sule, lu mare, lu Fanta." ☀️</span></div>
+                    <div class="team-row"><span class="team-name">Chamal</span><span class="team-motto">"Tattica del camaleonte: aspettare il bonus." 🦎💤</span></div>
+                    <div class="team-row"><span class="team-name">UFO RELOADED</span><span class="team-motto">"Spazio ai bonus!" 🛸</span></div>
+                    <div class="team-row"><span class="team-name">SSC BrakeTheBall</span><span class="team-motto">"Tanta sfiga, zero punti." 📉</span></div>
+                    <div class="team-row"><span class="team-name">Zikkenfikken.com</span><span class="team-motto">"Il computer non sbaglia." 💻</span></div>
+                    <div class="team-row"><span class="team-name">Branco</span><span class="team-motto">"Lupi affamati di +3." 🐺</span></div>
                 </div>
             </div>
 
@@ -194,33 +226,7 @@
                 </div>
             </div>
 
-            <!-- SEITEN FÜR DIE SPIELER -->
+            <!-- SEITEN FÜR DIE EINZELNEN BUTTONS (COMING SOON) -->
             <div id="acpicchia" class="page"><div class="coming-soon-box"><div class="coming-soon-title">ACPicchia 🦉</div><p style="color: #94a3b8;">Rosa e fanta-milioni rimasti.</p><p style="color: #f43f5e; font-weight: bold; font-family: monospace; font-size: 24px; margin-top: 20px;">COMING SOON...</p></div></div>
             <div id="rcursus" class="page"><div class="coming-soon-box"><div class="coming-soon-title">RC Ursus Urs 🐻</div><p style="color: #94a3b8;">Rosa e fanta-milioni rimasti.</p><p style="color: #f43f5e; font-weight: bold; font-family: monospace; font-size: 24px; margin-top: 20px;">COMING SOON...</p></div></div>
             <div id="ussalento" class="page"><div class="coming-soon-box"><div class="coming-soon-title">US Salento ☀️</div><p style="color: #94a3b8;">Rosa e fanta-milioni rimasti.</p><p style="color: #f43f5e; font-weight: bold; font-family: monospace; font-size: 24px; margin-top: 20px;">COMING SOON...</p></div></div>
-            <div id="chamal" class="page"><div class="coming-soon-box"><div class="coming-soon-title">Chamal 🦎</div><p style="color: #cbd5e1; font-style: italic; margin-bottom: 10px;">"Tattica del camaleonte: aspettare il bonus." 💤</p><p style="color: #94a3b8;">Rosa e fanta-milioni rimasti.</p><p style="color: #f43f5e; font-weight: bold; font-family: monospace; font-size: 24px; margin-top: 20px;">COMING SOON...</p></div></div>
-            <div id="ufo" class="page"><div class="coming-soon-box"><div class="coming-soon-title">UFO RELOADED 🛸</div><p style="color: #94a3b8;">Rosa e fanta-milioni rimasti.</p><p style="color: #f43f5e; font-weight: bold; font-family: monospace; font-size: 24px; margin-top: 20px;">COMING SOON...</p></div></div>
-            <div id="sscbrake" class="page"><div class="coming-soon-box"><div class="coming-soon-title">SSC BrakeTheBall 📉</div><p style="color: #94a3b8;">Rosa e fanta-milioni rimasti.</p><p style="color: #f43f5e; font-weight: bold; font-family: monospace; font-size: 24px; margin-top: 20px;">COMING SOON...</p></div></div>
-            <div id="zikken" class="page"><div class="coming-soon-box"><div class="coming-soon-title">Zikkenfikken.com 💻</div><p style="color: #94a3b8;">Rosa e fanta-milioni rimasti.</p><p style="color: #f43f5e; font-weight: bold; font-family: monospace; font-size: 24px; margin-top: 20px;">COMING SOON...</p></div></div>
-            <div id="branco" class="page"><div class="coming-soon-box"><div class="coming-soon-title">Branco 🐺</div><p style="color: #94a3b8;">Rosa e fanta-milioni rimasti.</p><p style="color: #f43f5e; font-weight: bold; font-family: monospace; font-size: 24px; margin-top: 20px;">COMING SOON...</p></div></div>
-
-        </div>
-    </div>
-
-    <!-- JAVASCRIPT FÜR SEITENWECHSEL UND TIMER -->
-    <script>
-        function showPage(pageId, btn) {
-            const pages = document.querySelectorAll('.page');
-            pages.forEach(page => page.classList.remove('active'));
-
-            const buttons = document.querySelectorAll('.menu-btn');
-            buttons.forEach(button => button.classList.remove('active'));
-
-            document.getElementById(pageId).classList.add('active');
-            btn.classList.add('active');
-        }
-
-        function updateTimer() {
-            const now = new Date();
-            
-            // Fixiertes Zieldatum auf HEUTE, den 15. August 2026 um 12:00:00 Uhr
