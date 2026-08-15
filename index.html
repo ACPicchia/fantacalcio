@@ -696,6 +696,105 @@
         }
 
 
+
+        /* ==========================================
+           CLASSIFICA - SUB TABS
+        ========================================== */
+
+        .classifica-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 20px 0 24px 0;
+            justify-content: center;
+        }
+
+        .classifica-tab {
+            border: 1px solid #334155;
+            background: #0f172a;
+            color: #cbd5e1;
+            padding: 10px 13px;
+            border-radius: 999px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: bold;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .classifica-tab:hover {
+            border-color: #38bdf8;
+            color: #38bdf8;
+        }
+
+        .classifica-tab.active {
+            background: #22c55e;
+            border-color: #22c55e;
+            color: #0f172a;
+            box-shadow: 0 0 12px rgba(34, 197, 94, 0.25);
+        }
+
+        .classifica-panel {
+            display: none;
+        }
+
+        .classifica-panel.active {
+            display: block;
+        }
+
+        .classifica-table-wrap {
+            overflow-x: auto;
+            margin-top: 12px;
+        }
+
+        .classifica-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #0f172a;
+            border-radius: 12px;
+            overflow: hidden;
+            min-width: 760px;
+        }
+
+        .classifica-table th,
+        .classifica-table td {
+            padding: 11px 10px;
+            border-bottom: 1px solid #334155;
+            text-align: center;
+            color: #cbd5e1;
+            font-size: 13px;
+        }
+
+        .classifica-table th {
+            background: #22c55e;
+            color: #0f172a;
+            font-weight: bold;
+        }
+
+        .classifica-table td.team-cell {
+            text-align: left;
+            font-weight: bold;
+            color: #e2e8f0;
+        }
+
+        .classifica-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .classifica-updated {
+            color: #94a3b8;
+            font-size: 12px;
+            margin-top: 14px;
+        }
+
+        .classifica-coming {
+            padding: 34px 20px;
+            border: 2px dashed #475569;
+            border-radius: 12px;
+            background: #0f172a;
+            color: #94a3b8;
+        }
+
         /* ==========================================
            COMING SOON
         ========================================== */
@@ -814,6 +913,17 @@
                 flex-direction: column;
 
                 align-items: flex-start;
+            }
+
+            .classifica-tabs {
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                justify-content: flex-start;
+                padding-bottom: 4px;
+            }
+
+            .classifica-tab {
+                flex: 0 0 auto;
             }
 
         }
@@ -1056,7 +1166,9 @@
      CLASSIFICA
 ========================================== -->
 
-<div id="classifica" class="page">
+<div
+    id="classifica"
+    class="page">
 
     <div class="coming-soon-box">
 
@@ -1064,121 +1176,287 @@
             📊 CLASSIFICA
         </div>
 
-        <div style="overflow-x:auto; margin-top:25px;">
+        <p style="color:#94a3b8; margin-bottom:0;">
+            Seleziona la competizione.
+        </p>
 
-            <table style="
-                width:100%;
-                border-collapse:collapse;
-                background:#0f172a;
-                color:#e2e8f0;
-                border-radius:12px;
-                overflow:hidden;
-            ">
+        <div class="classifica-tabs">
 
-                <thead>
-                    <tr style="background:#22c55e; color:#0f172a;">
-                        <th style="padding:12px;">#</th>
-                        <th style="padding:12px; text-align:left;">Squadra</th>
-                        <th style="padding:12px;">Pt</th>
-                        <th style="padding:12px;">V</th>
-                        <th style="padding:12px;">N</th>
-                        <th style="padding:12px;">P</th>
-                        <th style="padding:12px;">GF</th>
-                        <th style="padding:12px;">GS</th>
-                        <th style="padding:12px;">+/-</th>
-                        <th style="padding:12px;">FP</th>
-                    </tr>
-                </thead>
+            <button
+                class="classifica-tab active"
+                onclick="showClassificaTab('campionato', this)">
+                🏆 CAMPIONATO
+            </button>
 
-                <tbody>
+            <button
+                class="classifica-tab"
+                onclick="showClassificaTab('qualificazione', this)">
+                ⚽ QUALIFICAZIONE CHAMPIONS
+            </button>
 
-                    <tr style="border-bottom:1px solid #334155;">
-                        <td style="padding:11px;">1</td>
-                        <td style="padding:11px; text-align:left;">🐻 RC Ursus Urs</td>
-                        <td style="padding:11px;"><strong>0</strong></td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                    </tr>
+            <button
+                class="classifica-tab"
+                onclick="showClassificaTab('champions', this)">
+                ⭐ CHAMPIONS LEAGUE
+            </button>
 
-                    <tr style="border-bottom:1px solid #334155;">
-                        <td style="padding:11px;">2</td>
-                        <td style="padding:11px; text-align:left;">☀️ US Salento</td>
-                        <td><strong>0</strong></td>
-                        <td>0</td><td>0</td><td>0</td>
-                        <td>0</td><td>0</td><td>0</td><td>0</td>
-                    </tr>
+            <button
+                class="classifica-tab"
+                onclick="showClassificaTab('europa', this)">
+                🏆 EUROPA LEAGUE
+            </button>
 
-                    <tr style="border-bottom:1px solid #334155;">
-                        <td style="padding:11px;">3</td>
-                        <td style="padding:11px; text-align:left;">🦉 ACPicchia</td>
-                        <td><strong>0</strong></td>
-                        <td>0</td><td>0</td><td>0</td>
-                        <td>0</td><td>0</td><td>0</td><td>0</td>
-                    </tr>
+            <button
+                class="classifica-tab"
+                onclick="showClassificaTab('coppa', this)">
+                🇮🇹 COPPA ITALIA
+            </button>
 
-                    <tr style="border-bottom:1px solid #334155;">
-                        <td style="padding:11px;">4</td>
-                        <td style="padding:11px; text-align:left;">🦎 Chamal</td>
-                        <td><strong>0</strong></td>
-                        <td>0</td><td>0</td><td>0</td>
-                        <td>0</td><td>0</td><td>0</td><td>0</td>
-                    </tr>
+            <button
+                class="classifica-tab"
+                onclick="showClassificaTab('supercoppa-europa', this)">
+                🥇 SUPERCOPPA EUROPEA
+            </button>
 
-                    <tr style="border-bottom:1px solid #334155;">
-                        <td style="padding:11px;">5</td>
-                        <td style="padding:11px; text-align:left;">🛸 UFO RELOADED</td>
-                        <td><strong>0</strong></td>
-                        <td>0</td><td>0</td><td>0</td>
-                        <td>0</td><td>0</td><td>0</td><td>0</td>
-                    </tr>
+            <button
+                class="classifica-tab"
+                onclick="showClassificaTab('supercoppa-italiana', this)">
+                🏆 SUPERCOPPA ITALIANA
+            </button>
 
-                    <tr style="border-bottom:1px solid #334155;">
-                        <td style="padding:11px;">6</td>
-                        <td style="padding:11px; text-align:left;">📉 SSC BrakeTheBall</td>
-                        <td><strong>0</strong></td>
-                        <td>0</td><td>0</td><td>0</td>
-                        <td>0</td><td>0</td><td>0</td><td>0</td>
-                    </tr>
+            <button
+                class="classifica-tab"
+                onclick="showClassificaTab('fantapunti', this)">
+                🔥 FANTAPUNTI
+            </button>
 
-                    <tr style="border-bottom:1px solid #334155;">
-                        <td style="padding:11px;">7</td>
-                        <td style="padding:11px; text-align:left;">💻 Zikkenfikken.com</td>
-                        <td><strong>0</strong></td>
-                        <td>0</td><td>0</td><td>0</td>
-                        <td>0</td><td>0</td><td>0</td><td>0</td>
-                    </tr>
-
-                    <tr>
-                        <td style="padding:11px;">8</td>
-                        <td style="padding:11px; text-align:left;">🐺 Branco</td>
-                        <td><strong>0</strong></td>
-                        <td>0</td><td>0</td><td>0</td>
-                        <td>0</td><td>0</td><td>0</td><td>0</td>
-                    </tr>
-
-                </tbody>
-
-            </table>
+            <button
+                class="classifica-tab"
+                onclick="showClassificaTab('giornata', this)">
+                📅 GIORNATA PER GIORNATA
+            </button>
 
         </div>
 
-        <p style="
-            color:#94a3b8;
-            font-size:12px;
-            margin-top:18px;
-        ">
-            Ultimo aggiornamento: 15.08.2026
-        </p>
+
+        <!-- CAMPIONATO -->
+
+        <div
+            id="classifica-campionato"
+            class="classifica-panel active">
+
+            <div class="classifica-table-wrap">
+
+                <table class="classifica-table">
+
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th style="text-align:left;">Squadra</th>
+                            <th>Pt</th>
+                            <th>V</th>
+                            <th>N</th>
+                            <th>P</th>
+                            <th>GF</th>
+                            <th>GS</th>
+                            <th>+/-</th>
+                            <th>FP</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td>1</td>
+                            <td class="team-cell">🐻 RC Ursus Urs</td>
+                            <td><strong>0</strong></td>
+                            <td>0</td><td>0</td><td>0</td>
+                            <td>0</td><td>0</td><td>0</td><td>0</td>
+                        </tr>
+
+                        <tr>
+                            <td>2</td>
+                            <td class="team-cell">☀️ US Salento</td>
+                            <td><strong>0</strong></td>
+                            <td>0</td><td>0</td><td>0</td>
+                            <td>0</td><td>0</td><td>0</td><td>0</td>
+                        </tr>
+
+                        <tr>
+                            <td>3</td>
+                            <td class="team-cell">🦉 ACPicchia</td>
+                            <td><strong>0</strong></td>
+                            <td>0</td><td>0</td><td>0</td>
+                            <td>0</td><td>0</td><td>0</td><td>0</td>
+                        </tr>
+
+                        <tr>
+                            <td>4</td>
+                            <td class="team-cell">🦎 Chamal</td>
+                            <td><strong>0</strong></td>
+                            <td>0</td><td>0</td><td>0</td>
+                            <td>0</td><td>0</td><td>0</td><td>0</td>
+                        </tr>
+
+                        <tr>
+                            <td>5</td>
+                            <td class="team-cell">🛸 UFO RELOADED</td>
+                            <td><strong>0</strong></td>
+                            <td>0</td><td>0</td><td>0</td>
+                            <td>0</td><td>0</td><td>0</td><td>0</td>
+                        </tr>
+
+                        <tr>
+                            <td>6</td>
+                            <td class="team-cell">📉 SSC BrakeTheBall</td>
+                            <td><strong>0</strong></td>
+                            <td>0</td><td>0</td><td>0</td>
+                            <td>0</td><td>0</td><td>0</td><td>0</td>
+                        </tr>
+
+                        <tr>
+                            <td>7</td>
+                            <td class="team-cell">💻 Zikkenfikken.com</td>
+                            <td><strong>0</strong></td>
+                            <td>0</td><td>0</td><td>0</td>
+                            <td>0</td><td>0</td><td>0</td><td>0</td>
+                        </tr>
+
+                        <tr>
+                            <td>8</td>
+                            <td class="team-cell">🐺 Branco</td>
+                            <td><strong>0</strong></td>
+                            <td>0</td><td>0</td><td>0</td>
+                            <td>0</td><td>0</td><td>0</td><td>0</td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+            <div class="classifica-updated">
+                Ultimo aggiornamento: 15.08.2026
+            </div>
+
+        </div>
+
+
+        <!-- QUALIFICAZIONE CHAMPIONS -->
+
+        <div
+            id="classifica-qualificazione"
+            class="classifica-panel">
+
+            <div class="classifica-coming">
+                ⚽ <strong>QUALIFICAZIONE CHAMPIONS LEAGUE</strong><br><br>
+                COMING SOON...
+            </div>
+
+        </div>
+
+
+        <!-- CHAMPIONS -->
+
+        <div
+            id="classifica-champions"
+            class="classifica-panel">
+
+            <div class="classifica-coming">
+                ⭐ <strong>CHAMPIONS LEAGUE</strong><br><br>
+                COMING SOON...
+            </div>
+
+        </div>
+
+
+        <!-- EUROPA LEAGUE -->
+
+        <div
+            id="classifica-europa"
+            class="classifica-panel">
+
+            <div class="classifica-coming">
+                🏆 <strong>EUROPA LEAGUE</strong><br><br>
+                COMING SOON...
+            </div>
+
+        </div>
+
+
+        <!-- COPPA ITALIA -->
+
+        <div
+            id="classifica-coppa"
+            class="classifica-panel">
+
+            <div class="classifica-coming">
+                🇮🇹 <strong>COPPA ITALIA</strong><br><br>
+                COMING SOON...
+            </div>
+
+        </div>
+
+
+        <!-- SUPERCOPPA EUROPEA -->
+
+        <div
+            id="classifica-supercoppa-europa"
+            class="classifica-panel">
+
+            <div class="classifica-coming">
+                🥇 <strong>SUPERCOPPA EUROPEA</strong><br><br>
+                COMING SOON...
+            </div>
+
+        </div>
+
+
+        <!-- SUPERCOPPA ITALIANA -->
+
+        <div
+            id="classifica-supercoppa-italiana"
+            class="classifica-panel">
+
+            <div class="classifica-coming">
+                🏆 <strong>SUPERCOPPA ITALIANA</strong><br><br>
+                COMING SOON...
+            </div>
+
+        </div>
+
+
+        <!-- FANTAPUNTI -->
+
+        <div
+            id="classifica-fantapunti"
+            class="classifica-panel">
+
+            <div class="classifica-coming">
+                🔥 <strong>FANTAPUNTI</strong><br><br>
+                COMING SOON...
+            </div>
+
+        </div>
+
+
+        <!-- GIORNATA PER GIORNATA -->
+
+        <div
+            id="classifica-giornata"
+            class="classifica-panel">
+
+            <div class="classifica-coming">
+                📅 <strong>GIORNATA PER GIORNATA</strong><br><br>
+                COMING SOON...
+            </div>
+
+        </div>
 
     </div>
 
 </div>
-
 
 
 <!-- ==========================================
@@ -1922,6 +2200,39 @@ window.addEventListener(
     "hashchange",
     loadPageFromHash
 );
+
+
+
+
+/* ==========================================
+   CLASSIFICA SUB-NAVIGATION
+========================================== */
+
+function showClassificaTab(tabId, button) {
+
+    document
+        .querySelectorAll(".classifica-panel")
+        .forEach(function(panel) {
+            panel.classList.remove("active");
+        });
+
+    const selectedPanel =
+        document.getElementById("classifica-" + tabId);
+
+    if (selectedPanel) {
+        selectedPanel.classList.add("active");
+    }
+
+    document
+        .querySelectorAll(".classifica-tab")
+        .forEach(function(tab) {
+            tab.classList.remove("active");
+        });
+
+    if (button) {
+        button.classList.add("active");
+    }
+}
 
 
 
