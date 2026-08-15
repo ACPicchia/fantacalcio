@@ -2493,6 +2493,11 @@
 
 <script>
 
+// Browser soll nach F5 nicht die alte Scrollposition wiederherstellen
+if ("scrollRestoration" in history) {
+    history.scrollRestoration = "manual";
+}
+
 
 /* ==========================================
    NAVIGATION
@@ -2589,6 +2594,31 @@ function loadPageFromHash() {
             }
 
         });
+
+
+    // Scrollposition des rechten Inhaltsbereichs zurücksetzen
+    const mainContent =
+        document.querySelector(".main-content");
+
+    if (mainContent) {
+        mainContent.scrollTop = 0;
+    }
+
+    // Falls auf Mobile die ganze Seite scrollt
+    window.scrollTo(0, 0);
+
+
+    // Noch einmal nach dem Layout-Aufbau
+    requestAnimationFrame(function() {
+
+        if (mainContent) {
+            mainContent.scrollTop = 0;
+        }
+
+        window.scrollTo(0, 0);
+
+    });
+
 }
 
 
@@ -2991,11 +3021,24 @@ function updateCountdown() {
 
 updateCountdown();
 
-
 setInterval(
     updateCountdown,
     1000
 );
+
+
+window.addEventListener("load", function() {
+
+    const mainContent =
+        document.querySelector(".main-content");
+
+    if (mainContent) {
+        mainContent.scrollTop = 0;
+    }
+
+    window.scrollTo(0, 0);
+
+});
 
 
 </script>
