@@ -1374,7 +1374,7 @@
         <div class="lineup-note">
 
             <strong>
-                ⚽ Modulo base consigliato:
+                ⚽ Modulo vincente:
             </strong>
             3-4-3
 
@@ -1694,39 +1694,99 @@ function showPage(pageId, button) {
     document
         .querySelectorAll(".page")
         .forEach(function(page) {
-
             page.classList.remove("active");
-
         });
-
 
     const selectedPage =
         document.getElementById(pageId);
 
-
     if (selectedPage) {
-
         selectedPage.classList.add("active");
-
     }
 
+    document
+        .querySelectorAll(".menu-btn")
+        .forEach(function(btn) {
+            btn.classList.remove("active");
+        });
 
+    if (button) {
+        button.classList.add("active");
+    }
+
+    // Aktuelle Seite in der URL speichern.
+    // Beispiel: #acpicchia, #classifica, #branco
+    if (window.location.hash !== "#" + pageId) {
+        window.location.hash = pageId;
+    }
+}
+
+
+/* ==========================================
+   SEITE NACH F5 / DIREKTLINK WIEDERHERSTELLEN
+========================================== */
+
+function loadPageFromHash() {
+
+    let pageId =
+        window.location.hash.substring(1);
+
+    // Ohne Hash oder bei ungültigem Hash auf Home gehen
+    if (
+        !pageId ||
+        !document.getElementById(pageId)
+    ) {
+        pageId = "home";
+    }
+
+    // Alle Seiten ausblenden
+    document
+        .querySelectorAll(".page")
+        .forEach(function(page) {
+            page.classList.remove("active");
+        });
+
+    // Gewünschte Seite anzeigen
+    const selectedPage =
+        document.getElementById(pageId);
+
+    if (selectedPage) {
+        selectedPage.classList.add("active");
+    }
+
+    // Menübutton passend markieren
     document
         .querySelectorAll(".menu-btn")
         .forEach(function(btn) {
 
             btn.classList.remove("active");
 
+            const onclickText =
+                btn.getAttribute("onclick");
+
+            if (
+                onclickText &&
+                onclickText.includes("'" + pageId + "'")
+            ) {
+                btn.classList.add("active");
+            }
+
         });
-
-
-    if (button) {
-
-        button.classList.add("active");
-
-    }
-
 }
+
+
+// Beim Laden/F5 die Seite aus dem Hash öffnen
+window.addEventListener(
+    "DOMContentLoaded",
+    loadPageFromHash
+);
+
+
+// Browser Zurück/Vorwärts und manuelle Hash-Änderungen unterstützen
+window.addEventListener(
+    "hashchange",
+    loadPageFromHash
+);
 
 
 
