@@ -2513,6 +2513,14 @@ function showPage(pageId, button) {
         selectedPage.classList.add("active");
     }
 
+    const mainContent = document.querySelector(".main-content");
+
+if (mainContent) {
+    mainContent.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
     document
         .querySelectorAll(".menu-btn")
         .forEach(function(btn) {
