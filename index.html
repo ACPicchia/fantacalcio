@@ -3,18 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FANTACALCIO 2026/27 - Countdown Asta</title>
+    <title>FANTACALCIO 2026/27 - Countdown Mercato</title>
     <style>
         body {
             background-color: #0f172a;
             color: #ffffff;
-            font-family: 'Impact', 'Arial Black', sans-serif;
+            font-family: 'Arial', sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
             margin: 0;
-            overflow: hidden;
+            padding: 20px;
+            box-sizing: border-box;
         }
         .container {
             text-align: center;
@@ -22,12 +23,12 @@
             padding: 30px;
             border-radius: 20px;
             background: #1e293b;
-            max-width: 500px;
-            width: 90%;
+            max-width: 600px;
+            width: 100%;
             box-shadow: 0 10px 30px rgba(56, 189, 248, 0.3);
         }
-        h1 { font-size: 32px; color: #38bdf8; text-transform: uppercase; letter-spacing: 2px; margin-top: 0; }
-        h2 { font-size: 20px; color: #94a3b8; font-weight: normal; margin-bottom: 20px; }
+        h1 { font-family: 'Impact', sans-serif; font-size: 36px; color: #38bdf8; text-transform: uppercase; margin-top: 0; }
+        h2 { font-size: 18px; color: #94a3b8; font-weight: normal; margin-bottom: 20px; }
         #countdown {
             font-size: 55px;
             font-weight: bold;
@@ -36,6 +37,24 @@
             margin: 20px 0;
             text-shadow: 0 0 15px rgba(244, 63, 94, 0.6);
         }
+        .team-list {
+            margin-top: 30px;
+            text-align: left;
+            background: #0f172a;
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid #334155;
+        }
+        .team-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #1e293b;
+            font-size: 14px;
+        }
+        .team-row:last-child { border-bottom: none; }
+        .team-name { font-weight: bold; color: #38bdf8; }
+        .team-motto { color: #94a3b8; font-style: italic; }
         #meme-container {
             display: none;
             margin-top: 20px;
@@ -50,9 +69,9 @@
             animation: flash 0.6s infinite;
         }
         @keyframes flash {
-            0% { background-color: #22c55e; color: white; }
-            50% { background-color: #1e293b; color: #22c55e; }
-            100% { background-color: #22c55e; color: white; }
+            0% { border-color: #22c55e; box-shadow: 0 10px 30px rgba(34, 197, 94, 0.4); }
+            50% { border-color: #1e293b; box-shadow: none; }
+            100% { border-color: #22c55e; box-shadow: 0 10px 30px rgba(34, 197, 94, 0.4); }
         }
     </style>
 </head>
@@ -60,15 +79,27 @@
 
 <div class="container" id="box">
     <h1>FANTACALCIO 2026/27 ⚽</h1>
-    <h2 id="status">Mancano solo pochi minuti all'apertura...</h2>
+    <h2 id="status">Il mercato sta per iniziare. Preparate i crediti!</h2>
     
     <div id="countdown">00:00:00</div>
     
-    <p id="subtext" style="color: #cbd5e1; font-size: 16px;">Preparate i fanta-milioni. Alle 12:00 si salta il banco!</p>
+    <p id="subtext" style="color: #cbd5e1; font-size: 16px;">Alle 12:00 si salta il banco! Nessuno sconto per i top player.</p>
 
-    <!-- HIER WIRD DAS LUSTIGE BILD AUTOMATISCH EINGEBLENDET -->
+    <!-- MEME DI GALLIANI AL TELEFONO -->
     <div id="meme-container">
-        <img class="meme-img" src="https://unsplash.com" alt="Calciomercato">
+        <img class="meme-img" src="https://corriereobjects.it" alt="Galliani Condor">
+    </div>
+
+    <!-- LISTA PARTECIPANTI -->
+    <div class="team-list">
+        <div class="team-row"><span class="team-name">ACPicchia</span><span class="team-motto">"Gufare è un dovere!" 🦉</span></div>
+        <div class="team-row"><span class="team-name">RC Ursus Urs</span><span class="team-motto">"Mai una gioia." 🐻</span></div>
+        <div class="team-row"><span class="team-name">US Salento</span><span class="team-motto">"Lu sule, lu mare, lu Fanta." ☀️</span></div>
+        <div class="team-row"><span class="team-name">Chamal</span><span class="team-motto">"Tattica del camaleonte: aspettare il bonus." 🦎💤</span></div>
+        <div class="team-row"><span class="team-name">UFO RELOADED</span><span class="team-motto">"Spazio ai bonus!" 🛸</span></div>
+        <div class="team-row"><span class="team-name">SSC BrakeTheBall</span><span class="team-motto">"Tanta sfiga, zero punti." 📉</span></div>
+        <div class="team-row"><span class="team-name">Zikkenfikken.com</span><span class="team-motto">"Il computer non sbaglia." 💻</span></div>
+        <div class="team-row"><span class="team-name">Branco</span><span class="team-motto">"Lupi affamati di +3." 🐺</span></div>
     </div>
 </div>
 
@@ -76,14 +107,13 @@
 function updateTimer() {
     const now = new Date();
     const target = new Date();
-    target.setHours(12, 0, 0, 0); // Ziel: Heute um 12:00 Uhr
+    target.setHours(12, 0, 0, 0); // Ziel: 12:00 Uhr
 
     if (now >= target) {
-        // EFFEKT WENN ES 12:00 UHR IST:
         document.getElementById('countdown').style.display = 'none';
-        document.getElementById('status').innerHTML = "🚨 MERCATO APERTO! 🚨";
+        document.getElementById('status').innerHTML = "🚨 ASTA APERTA! CHIAMATE IL CONDOR! 🚨";
         document.getElementById('status').style.color = "#22c55e";
-        document.getElementById('subtext').innerHTML = "Basta chiacchiere! Scatenate l'inferno all'asta! 💸🏃‍♂️";
+        document.getElementById('subtext').innerHTML = "Basta chiacchiere! Offerte folli per gli attaccanti! 💸🏃‍♂️";
         document.getElementById('meme-container').style.display = 'block';
         document.getElementById('box').classList.add('market-open');
         return;
