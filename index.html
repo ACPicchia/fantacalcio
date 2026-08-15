@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FANTACALCIO 2026/27 - Countdown Asta</title>
+    <style>
+        body {
+            background-color: #0f172a;
+            color: #ffffff;
+            font-family: 'Impact', 'Arial Black', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+        .container {
+            text-align: center;
+            border: 4px solid #38bdf8;
+            padding: 30px;
+            border-radius: 20px;
+            background: #1e293b;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 10px 30px rgba(56, 189, 248, 0.3);
+        }
+        h1 { font-size: 32px; color: #38bdf8; text-transform: uppercase; letter-spacing: 2px; margin-top: 0; }
+        h2 { font-size: 20px; color: #94a3b8; font-weight: normal; margin-bottom: 20px; }
+        #countdown {
+            font-size: 55px;
+            font-weight: bold;
+            color: #f43f5e;
+            font-family: monospace;
+            margin: 20px 0;
+            text-shadow: 0 0 15px rgba(244, 63, 94, 0.6);
+        }
+        #meme-container {
+            display: none;
+            margin-top: 20px;
+        }
+        .meme-img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            border: 3px solid #22c55e;
+        }
+        .market-open {
+            animation: flash 0.6s infinite;
+        }
+        @keyframes flash {
+            0% { background-color: #22c55e; color: white; }
+            50% { background-color: #1e293b; color: #22c55e; }
+            100% { background-color: #22c55e; color: white; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container" id="box">
+    <h1>FANTACALCIO 2026/27 ⚽</h1>
+    <h2 id="status">Mancano solo pochi minuti all'apertura...</h2>
+    
+    <div id="countdown">00:00:00</div>
+    
+    <p id="subtext" style="color: #cbd5e1; font-size: 16px;">Preparate i fanta-milioni. Alle 12:00 si salta il banco!</p>
+
+    <!-- HIER WIRD DAS LUSTIGE BILD AUTOMATISCH EINGEBLENDET -->
+    <div id="meme-container">
+        <img class="meme-img" src="https://unsplash.com" alt="Calciomercato">
+    </div>
+</div>
+
+<script>
+function updateTimer() {
+    const now = new Date();
+    const target = new Date();
+    target.setHours(12, 0, 0, 0); // Ziel: Heute um 12:00 Uhr
+
+    if (now >= target) {
+        // EFFEKT WENN ES 12:00 UHR IST:
+        document.getElementById('countdown').style.display = 'none';
+        document.getElementById('status').innerHTML = "🚨 MERCATO APERTO! 🚨";
+        document.getElementById('status').style.color = "#22c55e";
+        document.getElementById('subtext').innerHTML = "Basta chiacchiere! Scatenate l'inferno all'asta! 💸🏃‍♂️";
+        document.getElementById('meme-container').style.display = 'block';
+        document.getElementById('box').classList.add('market-open');
+        return;
+    }
+
+    const diff = target - now;
+    const hours = String(Math.floor(diff / 3600000)).padStart(2, '0');
+    const minutes = String(Math.floor((diff % 3600000) / 60000)).padStart(2, '0');
+    const seconds = String(Math.floor((diff % 60000) / 1000)).padStart(2, '0');
+
+    document.getElementById('countdown').innerHTML = `${hours}:${minutes}:${seconds}`;
+}
+
+setInterval(updateTimer, 1000);
+updateTimer();
+</script>
+
+</body>
+</html>
