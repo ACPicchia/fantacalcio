@@ -3,230 +3,1364 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>FANTACALCIO 2026/27 - Dashboard</title>
+
     <style>
+
+        /* =========================
+           GENERALE
+        ========================== */
+
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             background-color: #0f172a;
             color: #ffffff;
-            font-family: 'Arial', sans-serif;
+            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
+
             display: flex;
+
             height: 100vh;
             overflow: hidden;
         }
 
-        /* Linke Menüleiste (Sidebar) */
+
+        /* =========================
+           SIDEBAR
+        ========================== */
+
         .sidebar {
             width: 260px;
+
             background-color: #1e293b;
+
             padding: 20px 15px;
+
             display: flex;
             flex-direction: column;
+
             gap: 10px;
+
             border-right: 2px solid #334155;
-            box-sizing: border-box;
+
             overflow-y: auto;
+
+            flex-shrink: 0;
         }
 
+
         .sidebar-title {
-            font-family: 'Impact', sans-serif;
+
+            font-family: Impact, Arial, sans-serif;
+
             font-size: 22px;
+
             color: #38bdf8;
+
             text-align: center;
+
             margin-bottom: 15px;
+
             letter-spacing: 1px;
+
             text-transform: uppercase;
         }
 
-        /* Menü Buttons */
+
+        /* =========================
+           MENU BUTTON
+        ========================== */
+
         .menu-btn {
+
             background: #0f172a;
+
             color: #94a3b8;
+
             border: 1px solid #334155;
+
             padding: 12px 15px;
+
             border-radius: 8px;
+
             cursor: pointer;
+
             text-align: left;
+
             font-weight: bold;
+
             font-size: 14px;
-            transition: all 0.3s ease;
+
+            transition: all 0.25s ease;
+
             display: flex;
+
             align-items: center;
+
             gap: 10px;
         }
 
+
         .menu-btn:hover {
+
             background: #38bdf8;
+
             color: #0f172a;
+
             border-color: #38bdf8;
+
             transform: translateX(5px);
         }
 
+
         .menu-btn.active {
+
             background: #e11d48;
+
             color: white;
+
             border-color: #e11d48;
-            box-shadow: 0 0 10px rgba(225, 29, 72, 0.5);
+
+            box-shadow:
+                0 0 12px
+                rgba(225, 29, 72, 0.55);
         }
+
 
         .menu-btn.special {
+
             background: #22c55e;
+
             color: #0f172a;
+
             border-color: #22c55e;
         }
+
+
         .menu-btn.special:hover {
+
             background: #15803d;
+
             color: white;
         }
 
-        /* Hauptinhalt (Rechte Seite) */
+
+        /* =========================
+           MAIN CONTENT
+        ========================== */
+
         .main-content {
+
             flex-grow: 1;
+
             padding: 40px;
+
             display: flex;
+
             justify-content: center;
+
             align-items: center;
-            box-sizing: border-box;
+
             overflow-y: auto;
-            background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    #1e293b 0%,
+                    #0f172a 100%
+                );
         }
+
 
         .container {
+
             text-align: center;
+
             border: 4px solid #38bdf8;
+
             padding: 40px;
+
             border-radius: 20px;
+
             background: #1e293b;
-            max-width: 650px;
+
+            max-width: 730px;
+
             width: 100%;
-            box-shadow: 0 10px 30px rgba(56, 189, 248, 0.2);
+
+            box-shadow:
+                0 10px 30px
+                rgba(56, 189, 248, 0.20);
         }
 
-        /* Inhalt-Seiten */
+
+        /* =========================
+           SEITEN
+        ========================== */
+
         .page {
             display: none;
         }
+
+
         .page.active {
             display: block;
         }
 
-        h1 { font-family: 'Impact', sans-serif; font-size: 38px; color: #38bdf8; text-transform: uppercase; margin-top: 0; }
-        h2 { font-size: 18px; color: #94a3b8; font-weight: normal; margin-bottom: 20px; }
-        
-        #countdown {
-            font-size: 60px;
-            font-weight: bold;
-            color: #f43f5e;
-            font-family: monospace;
-            margin: 25px 0;
-            text-shadow: 0 0 15px rgba(244, 63, 94, 0.6);
+
+        /* =========================
+           TITEL
+        ========================== */
+
+        h1 {
+
+            font-family: Impact, Arial, sans-serif;
+
+            font-size: 38px;
+
+            color: #38bdf8;
+
+            text-transform: uppercase;
+
+            margin-top: 0;
+
+            letter-spacing: 1px;
         }
 
-        /* Tabelle der Mottos auf der Hauptseite */
+
+        h2 {
+
+            font-size: 18px;
+
+            color: #94a3b8;
+
+            font-weight: normal;
+
+            margin-bottom: 20px;
+        }
+
+
+        /* =========================
+           COUNTDOWN
+        ========================== */
+
+        #countdown {
+
+            font-size: 60px;
+
+            font-weight: bold;
+
+            color: #f43f5e;
+
+            font-family: monospace;
+
+            margin: 25px 0;
+
+            text-shadow:
+                0 0 15px
+                rgba(244, 63, 94, 0.65);
+        }
+
+
+        /*
+        Countdown pulsiert
+        während der letzten 10 Minuten
+        */
+
+        #countdown.warning {
+
+            animation:
+                pulseCountdown
+                0.7s infinite alternate;
+        }
+
+
+        @keyframes pulseCountdown {
+
+            from {
+
+                transform: scale(1);
+
+                text-shadow:
+                    0 0 10px
+                    rgba(244, 63, 94, 0.6);
+            }
+
+            to {
+
+                transform: scale(1.08);
+
+                text-shadow:
+                    0 0 30px
+                    rgba(244, 63, 94, 1);
+            }
+        }
+
+
+        /* =========================
+           MARKT OFFEN
+        ========================== */
+
+        #countdown.open {
+
+            color: #22c55e;
+
+            font-size: 48px;
+
+            animation:
+                marketOpen
+                0.8s infinite alternate;
+        }
+
+
+        @keyframes marketOpen {
+
+            from {
+
+                transform: scale(1);
+
+                text-shadow:
+                    0 0 10px
+                    #22c55e;
+            }
+
+            to {
+
+                transform: scale(1.08);
+
+                text-shadow:
+                    0 0 35px
+                    #22c55e;
+            }
+        }
+
+
+        /* =========================
+           TEAM LIST
+        ========================== */
+
         .team-list {
+
             margin-top: 30px;
+
             text-align: left;
+
             background: #0f172a;
+
             padding: 20px;
+
             border-radius: 12px;
+
             border: 1px solid #334155;
         }
+
+
         .team-row {
+
             display: flex;
+
             justify-content: space-between;
+
+            gap: 20px;
+
             padding: 10px 0;
-            border-bottom: 1px solid #1e293b;
+
+            border-bottom:
+                1px solid #1e293b;
+
             font-size: 14px;
         }
-        .team-row:last-child { border-bottom: none; }
-        .team-name { font-weight: bold; color: #38bdf8; }
-        .team-motto { color: #94a3b8; font-style: italic; }
+
+
+        .team-row:last-child {
+            border-bottom: none;
+        }
+
+
+        .team-name {
+
+            font-weight: bold;
+
+            color: #38bdf8;
+
+            white-space: nowrap;
+        }
+
+
+        .team-motto {
+
+            color: #94a3b8;
+
+            font-style: italic;
+
+            text-align: right;
+        }
+
+
+        /* =========================
+           COMING SOON BOX
+        ========================== */
 
         .coming-soon-box {
+
             padding: 40px;
+
             background: #0f172a;
+
             border-radius: 12px;
+
             border: 2px dashed #475569;
         }
+
+
         .coming-soon-title {
-            font-family: 'Impact', sans-serif;
+
+            font-family:
+                Impact,
+                Arial,
+                sans-serif;
+
             font-size: 32px;
+
             color: #e2e8f0;
+
             margin-bottom: 10px;
         }
 
-        #meme-container {
-            display: none;
-            margin-top: 20px;
+
+        /* =========================
+           MOBILE
+        ========================== */
+
+        @media (max-width: 850px) {
+
+            body {
+
+                flex-direction: column;
+
+                height: auto;
+
+                overflow: auto;
+            }
+
+
+            .sidebar {
+
+                width: 100%;
+
+                height: auto;
+
+                flex-direction: row;
+
+                overflow-x: auto;
+
+                border-right: none;
+
+                border-bottom:
+                    2px solid #334155;
+            }
+
+
+            .sidebar-title {
+                display: none;
+            }
+
+
+            .menu-btn {
+
+                min-width: 170px;
+
+                white-space: nowrap;
+            }
+
+
+            .main-content {
+
+                padding: 20px;
+
+                min-height: 100vh;
+            }
+
+
+            .container {
+                padding: 25px;
+            }
+
+
+            #countdown {
+                font-size: 42px;
+            }
+
+
+            h1 {
+                font-size: 30px;
+            }
         }
-        .meme-img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 10px;
-            border: 3px solid #22c55e;
-        }
+
     </style>
 </head>
+
+
 <body>
 
-    <!-- SIDEBAR NAVIGATION -->
-    <div class="sidebar">
-        <div class="sidebar-title">Fanta 2026/27</div>
-        
-        <button class="menu-btn active" onclick="showPage('home', this)">⏰ TIMER MERCATO</button>
-        <button class="menu-btn special" onclick="showPage('classifica', this)">📊 CLASSIFICA / RISULTATI</button>
-        
-        <button class="menu-btn" onclick="showPage('acpicchia', this)">🦉 ACPicchia</button>
-        <button class="menu-btn" onclick="showPage('rcursus', this)">🐻 RC Ursus Urs</button>
-        <button class="menu-btn" onclick="showPage('ussalento', this)">☀️ US Salento</button>
-        <button class="menu-btn" onclick="showPage('chamal', this)">🦎 Chamal</button>
-        <button class="menu-btn" onclick="showPage('ufo', this)">🛸 UFO RELOADED</button>
-        <button class="menu-btn" onclick="showPage('sscbrake', this)">📉 SSC BrakeTheBall</button>
-        <button class="menu-btn" onclick="showPage('zikken', this)">💻 Zikkenfikken.com</button>
-        <button class="menu-btn" onclick="showPage('branco', this)">🐺 Branco</button>
+
+<!-- ======================================
+     SIDEBAR
+======================================= -->
+
+<div class="sidebar">
+
+    <div class="sidebar-title">
+        Fanta 2026/27
     </div>
 
-    <!-- MAIN CONTENT AREA -->
-    <div class="main-content">
-        <div class="container">
 
-            <!-- SEITE 1: TIMER MERCATO MIT MOTTOS -->
-            <div id="home" class="page active">
-                <h1>FANTACALCIO 2026/27 ⚽</h1>
-                <h2 id="title">Il mercato sta per iniziare. Preparate i crediti!</h2>
-                
-                <div id="countdown">Lädt...</div>
-                
-                <p id="subtext" style="color: #cbd5e1; font-size: 16px;">Alle 12:00 si salta il banco! Nessuno sconto per i top player.</p>
+    <button
+        class="menu-btn active"
+        onclick="showPage('home', this)">
+        ⏰ TIMER MERCATO
+    </button>
 
-                <div id="meme-container">
-                    <img class="meme-img" src="https://corriereobjects.it" alt="Galliani Condor">
-                </div>
 
-                <!-- Liste der Mottos auf der Startseite -->
-                <div class="team-list">
-                    <div class="team-row"><span class="team-name">ACPicchia</span><span class="team-motto">"Gufare è un dovere!" 🦉</span></div>
-                    <div class="team-row"><span class="team-name">RC Ursus Urs</span><span class="team-motto">"Mai una gioia." 🐻</span></div>
-                    <div class="team-row"><span class="team-name">US Salento</span><span class="team-motto">"Lu sule, lu mare, lu Fanta." ☀️</span></div>
-                    <div class="team-row"><span class="team-name">Chamal</span><span class="team-motto">"Tattica del camaleonte: aspettare il bonus." 🦎💤</span></div>
-                    <div class="team-row"><span class="team-name">UFO RELOADED</span><span class="team-motto">"Spazio ai bonus!" 🛸</span></div>
-                    <div class="team-row"><span class="team-name">SSC BrakeTheBall</span><span class="team-motto">"Tanta sfiga, zero punti." 📉</span></div>
-                    <div class="team-row"><span class="team-name">Zikkenfikken.com</span><span class="team-motto">"Il computer non sbaglia." 💻</span></div>
-                    <div class="team-row"><span class="team-name">Branco</span><span class="team-motto">"Lupi affamati di +3." 🐺</span></div>
-                </div>
-            </div>
+    <button
+        class="menu-btn special"
+        onclick="showPage('classifica', this)">
+        📊 CLASSIFICA / RISULTATI
+    </button>
 
-            <!-- SEITE 2: CLASSIFICA -->
-            <div id="classifica" class="page">
-                <div class="coming-soon-box">
-                    <div class="coming-soon-title">📊 CLASSIFICA</div>
-                    <p style="color: #94a3b8;">Classifica e risultati ufficiali disponibili dopo la prima giornata!</p>
-                    <p style="color: #38bdf8; font-weight: bold; font-family: monospace; font-size: 24px; margin-top: 20px;">COMING SOON...</p>
-                </div>
-            </div>
 
-            <!-- SEITEN FÜR DIE EINZELNEN BUTTONS (COMING SOON) -->
-            <div id="acpicchia" class="page"><div class="coming-soon-box"><div class="coming-soon-title">ACPicchia 🦉</div><p style="color: #94a3b8;">Rosa e fanta-milioni rimasti.</p><p style="color: #f43f5e; font-weight: bold; font-family: monospace; font-size: 24px; margin-top: 20px;">COMING SOON...</p></div></div>
-            <div id="rcursus" class="page"><div class="coming-soon-box"><div class="coming-soon-title">RC Ursus Urs 🐻</div><p style="color: #94a3b8;">Rosa e fanta-milioni rimasti.</p><p style="color: #f43f5e; font-weight: bold; font-family: monospace; font-size: 24px; margin-top: 20px;">COMING SOON...</p></div></div>
-            <div id="ussalento" class="page"><div class="coming-soon-box"><div class="coming-soon-title">US Salento ☀️</div><p style="color: #94a3b8;">Rosa e fanta-milioni rimasti.</p><p style="color: #f43f5e; font-weight: bold; font-family: monospace; font-size: 24px; margin-top: 20px;">COMING SOON...</p></div></div>
+    <button
+        class="menu-btn"
+        onclick="showPage('acpicchia', this)">
+        🦉 ACPicchia
+    </button>
+
+
+    <button
+        class="menu-btn"
+        onclick="showPage('rcursus', this)">
+        🐻 RC Ursus Urs
+    </button>
+
+
+    <button
+        class="menu-btn"
+        onclick="showPage('ussalento', this)">
+        ☀️ US Salento
+    </button>
+
+
+    <button
+        class="menu-btn"
+        onclick="showPage('chamal', this)">
+        🦎 Chamal
+    </button>
+
+
+    <button
+        class="menu-btn"
+        onclick="showPage('ufo', this)">
+        🛸 UFO RELOADED
+    </button>
+
+
+    <button
+        class="menu-btn"
+        onclick="showPage('sscbrake', this)">
+        📉 SSC BrakeTheBall
+    </button>
+
+
+    <button
+        class="menu-btn"
+        onclick="showPage('zikken', this)">
+        💻 Zikkenfikken.com
+    </button>
+
+
+    <button
+        class="menu-btn"
+        onclick="showPage('branco', this)">
+        🐺 Branco
+    </button>
+
+</div>
+
+
+
+<!-- ======================================
+     MAIN CONTENT
+======================================= -->
+
+<div class="main-content">
+
+<div class="container">
+
+
+<!-- ======================================
+     HOME / TIMER
+======================================= -->
+
+<div
+    id="home"
+    class="page active">
+
+
+    <h1>
+        FANTACALCIO 2026/27 ⚽
+    </h1>
+
+
+    <h2 id="title">
+        Il mercato sta per iniziare.
+        Preparate i crediti!
+    </h2>
+
+
+    <div id="countdown">
+        --:--:--
+    </div>
+
+
+    <p
+        id="subtext"
+        style="
+        color:#cbd5e1;
+        font-size:16px;
+        ">
+
+        Alle 12:00 si salta il banco!
+        Nessuno sconto per i top player.
+
+    </p>
+
+
+
+    <!-- TEAM MOTTOS -->
+
+    <div class="team-list">
+
+
+        <div class="team-row">
+
+            <span class="team-name">
+                ACPicchia
+            </span>
+
+            <span class="team-motto">
+                "Gufare è un dovere!" 🦉
+            </span>
+
+        </div>
+
+
+
+        <div class="team-row">
+
+            <span class="team-name">
+                RC Ursus Urs
+            </span>
+
+            <span class="team-motto">
+                "Mai una gioia." 🐻
+            </span>
+
+        </div>
+
+
+
+        <div class="team-row">
+
+            <span class="team-name">
+                US Salento
+            </span>
+
+            <span class="team-motto">
+                "Lu sule, lu mare, lu Fanta." ☀️
+            </span>
+
+        </div>
+
+
+
+        <div class="team-row">
+
+            <span class="team-name">
+                Chamal
+            </span>
+
+            <span class="team-motto">
+                "Tattica del camaleonte:
+                aspettare il bonus." 🦎💤
+            </span>
+
+        </div>
+
+
+
+        <div class="team-row">
+
+            <span class="team-name">
+                UFO RELOADED
+            </span>
+
+            <span class="team-motto">
+                "Spazio ai bonus!" 🛸
+            </span>
+
+        </div>
+
+
+
+        <div class="team-row">
+
+            <span class="team-name">
+                SSC BrakeTheBall
+            </span>
+
+            <span class="team-motto">
+                "Tanta sfiga, zero punti." 📉
+            </span>
+
+        </div>
+
+
+
+        <div class="team-row">
+
+            <span class="team-name">
+                Zikkenfikken.com
+            </span>
+
+            <span class="team-motto">
+                "Il computer non sbaglia." 💻
+            </span>
+
+        </div>
+
+
+
+        <div class="team-row">
+
+            <span class="team-name">
+                Branco
+            </span>
+
+            <span class="team-motto">
+                "Lupi affamati di +3." 🐺
+            </span>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
+<!-- ======================================
+     CLASSIFICA
+======================================= -->
+
+<div
+    id="classifica"
+    class="page">
+
+    <div class="coming-soon-box">
+
+        <div class="coming-soon-title">
+            📊 CLASSIFICA
+        </div>
+
+        <p style="color:#94a3b8;">
+
+            Classifica e risultati ufficiali
+            disponibili dopo la prima giornata!
+
+        </p>
+
+        <p
+            style="
+            color:#38bdf8;
+            font-weight:bold;
+            font-family:monospace;
+            font-size:24px;
+            margin-top:20px;
+            ">
+
+            COMING SOON...
+
+        </p>
+
+    </div>
+
+</div>
+
+
+
+<!-- ======================================
+     ACPICCHIA
+======================================= -->
+
+<div
+    id="acpicchia"
+    class="page">
+
+    <div class="coming-soon-box">
+
+        <div class="coming-soon-title">
+            ACPicchia 🦉
+        </div>
+
+        <p style="color:#94a3b8;">
+            Rosa e fanta-milioni rimasti.
+        </p>
+
+        <p
+            style="
+            color:#f43f5e;
+            font-weight:bold;
+            font-family:monospace;
+            font-size:24px;
+            ">
+            COMING SOON...
+        </p>
+
+    </div>
+
+</div>
+
+
+
+<!-- ======================================
+     RC URSUS URS
+======================================= -->
+
+<div
+    id="rcursus"
+    class="page">
+
+    <div class="coming-soon-box">
+
+        <div class="coming-soon-title">
+            RC Ursus Urs 🐻
+        </div>
+
+        <p style="color:#94a3b8;">
+            Rosa e fanta-milioni rimasti.
+        </p>
+
+        <p
+            style="
+            color:#f43f5e;
+            font-weight:bold;
+            font-family:monospace;
+            font-size:24px;
+            ">
+            COMING SOON...
+        </p>
+
+    </div>
+
+</div>
+
+
+
+<!-- ======================================
+     US SALENTO
+======================================= -->
+
+<div
+    id="ussalento"
+    class="page">
+
+    <div class="coming-soon-box">
+
+        <div class="coming-soon-title">
+            US Salento ☀️
+        </div>
+
+        <p style="color:#94a3b8;">
+            Rosa e fanta-milioni rimasti.
+        </p>
+
+        <p
+            style="
+            color:#f43f5e;
+            font-weight:bold;
+            font-family:monospace;
+            font-size:24px;
+            ">
+            COMING SOON...
+        </p>
+
+    </div>
+
+</div>
+
+
+
+<!-- ======================================
+     CHAMAL
+======================================= -->
+
+<div
+    id="chamal"
+    class="page">
+
+    <div class="coming-soon-box">
+
+        <div class="coming-soon-title">
+            Chamal 🦎
+        </div>
+
+        <p style="color:#94a3b8;">
+            Rosa e fanta-milioni rimasti.
+        </p>
+
+        <p
+            style="
+            color:#f43f5e;
+            font-weight:bold;
+            font-family:monospace;
+            font-size:24px;
+            ">
+            COMING SOON...
+        </p>
+
+    </div>
+
+</div>
+
+
+
+<!-- ======================================
+     UFO
+======================================= -->
+
+<div
+    id="ufo"
+    class="page">
+
+    <div class="coming-soon-box">
+
+        <div class="coming-soon-title">
+            UFO RELOADED 🛸
+        </div>
+
+        <p style="color:#94a3b8;">
+            Rosa e fanta-milioni rimasti.
+        </p>
+
+        <p
+            style="
+            color:#f43f5e;
+            font-weight:bold;
+            font-family:monospace;
+            font-size:24px;
+            ">
+            COMING SOON...
+        </p>
+
+    </div>
+
+</div>
+
+
+
+<!-- ======================================
+     SSC BRAKE THE BALL
+======================================= -->
+
+<div
+    id="sscbrake"
+    class="page">
+
+    <div class="coming-soon-box">
+
+        <div class="coming-soon-title">
+            SSC BrakeTheBall 📉
+        </div>
+
+        <p style="color:#94a3b8;">
+            Rosa e fanta-milioni rimasti.
+        </p>
+
+        <p
+            style="
+            color:#f43f5e;
+            font-weight:bold;
+            font-family:monospace;
+            font-size:24px;
+            ">
+            COMING SOON...
+        </p>
+
+    </div>
+
+</div>
+
+
+
+<!-- ======================================
+     ZIKKENFIKKEN
+======================================= -->
+
+<div
+    id="zikken"
+    class="page">
+
+    <div class="coming-soon-box">
+
+        <div class="coming-soon-title">
+            Zikkenfikken.com 💻
+        </div>
+
+        <p style="color:#94a3b8;">
+            Rosa e fanta-milioni rimasti.
+        </p>
+
+        <p
+            style="
+            color:#f43f5e;
+            font-weight:bold;
+            font-family:monospace;
+            font-size:24px;
+            ">
+            COMING SOON...
+        </p>
+
+    </div>
+
+</div>
+
+
+
+<!-- ======================================
+     BRANCO
+======================================= -->
+
+<div
+    id="branco"
+    class="page">
+
+    <div class="coming-soon-box">
+
+        <div class="coming-soon-title">
+            Branco 🐺
+        </div>
+
+        <p style="color:#94a3b8;">
+            Rosa e fanta-milioni rimasti.
+        </p>
+
+        <p
+            style="
+            color:#f43f5e;
+            font-weight:bold;
+            font-family:monospace;
+            font-size:24px;
+            ">
+            COMING SOON...
+        </p>
+
+    </div>
+
+</div>
+
+
+</div>
+</div>
+
+
+
+<!-- ======================================
+     JAVASCRIPT
+======================================= -->
+
+<script>
+
+
+/* ======================================
+   NAVIGATION
+======================================= */
+
+function showPage(pageId, button) {
+
+    /*
+    Alle Seiten verstecken
+    */
+
+    document
+        .querySelectorAll(".page")
+        .forEach(function(page) {
+
+            page.classList.remove("active");
+
+        });
+
+
+    /*
+    Gewählte Seite anzeigen
+    */
+
+    const selectedPage =
+        document.getElementById(pageId);
+
+    if (selectedPage) {
+
+        selectedPage.classList.add("active");
+
+    }
+
+
+    /*
+    Active Status bei Buttons entfernen
+    */
+
+    document
+        .querySelectorAll(".menu-btn")
+        .forEach(function(btn) {
+
+            btn.classList.remove("active");
+
+        });
+
+
+    /*
+    Gewählten Button aktiv setzen
+    */
+
+    if (button) {
+
+        button.classList.add("active");
+
+    }
+
+}
+
+
+
+/* ======================================
+   COUNTDOWN
+
+   MERCATO:
+   15 AUGUST 2026
+   12:00 SCHWEIZER ZEIT
+======================================= */
+
+
+/*
+Explizite Zeitzone +02:00 verwenden.
+
+Damit funktioniert der Timer unabhängig
+von den Datums-Einstellungen des Browsers.
+*/
+
+const mercatoStart =
+    new Date(
+        "2026-08-15T12:00:00+02:00"
+    ).getTime();
+
+
+
+function updateCountdown() {
+
+
+    const now =
+        new Date().getTime();
+
+
+    const distance =
+        mercatoStart - now;
+
+
+    const countdown =
+        document.getElementById("countdown");
+
+
+    const title =
+        document.getElementById("title");
+
+
+    const subtext =
+        document.getElementById("subtext");
+
+
+
+    /* ==================================
+       MERCATO IST OFFEN
+    ================================== */
+
+    if (distance <= 0) {
+
+
+        countdown.innerHTML =
+            "🔥 MERCATO APERTO 🔥";
+
+
+        countdown.classList.remove(
+            "warning"
+        );
+
+
+        countdown.classList.add(
+            "open"
+        );
+
+
+        title.innerHTML =
+            "⚽ IL MERCATO È APERTO! ⚽";
+
+
+        subtext.innerHTML =
+            "Che la battaglia abbia inizio! " +
+            "💰🔥 Nessuno sconto, nessuna pietà.";
+
+
+        return;
+    }
+
+
+
+    /* ==================================
+       ZEIT BERECHNEN
+    ================================== */
+
+
+    const hours =
+        Math.floor(
+            distance /
+            (1000 * 60 * 60)
+        );
+
+
+    const minutes =
+        Math.floor(
+            (
+                distance %
+                (1000 * 60 * 60)
+            ) /
+            (1000 * 60)
+        );
+
+
+    const seconds =
+        Math.floor(
+            (
+                distance %
+                (1000 * 60)
+            ) /
+            1000
+        );
+
+
+
+    /* ==================================
+       TIMER AUSGEBEN
+    ================================== */
+
+
+    countdown.innerHTML =
+
+        String(hours)
+            .padStart(2, "0")
+
+        + ":" +
+
+        String(minutes)
+            .padStart(2, "0")
+
+        + ":" +
+
+        String(seconds)
+            .padStart(2, "0");
+
+
+
+    /* ==================================
+       LETZTE 10 MINUTEN
+    ================================== */
+
+
+    if (
+        distance <=
+        10 * 60 * 1000
+    ) {
+
+        countdown
+            .classList
+            .add("warning");
+
+
+        title.innerHTML =
+            "🚨 ULTIMI 10 MINUTI! 🚨";
+
+
+        subtext.innerHTML =
+            "Preparate le offerte. " +
+            "Tra poco si scatena l'inferno! 🔥";
+
+    }
+
+
+
+    /* ==================================
+       LETZTE 60 SEKUNDEN
+    ================================== */
+
+
+    if (
+        distance <=
+        60 * 1000
+    ) {
+
+        title.innerHTML =
+            "🚨 ULTIMO MINUTO! 🚨";
+
+
+        subtext.innerHTML =
+            "DITO SUL MOUSE! " +
+            "Il mercato sta per aprire... ⚽💰";
+
+    }
+
+}
+
+
+
+/* ======================================
+   TIMER STARTEN
+======================================= */
+
+
+/*
+Sofort berechnen.
+Ohne diese Zeile würde beim Laden
+kurz --:--:-- angezeigt.
+*/
+
+updateCountdown();
+
+
+/*
+Danach jede Sekunde aktualisieren.
+*/
+
+setInterval(
+    updateCountdown,
+    1000
+);
+
+
+</script>
+
+
+</body>
+</html>
