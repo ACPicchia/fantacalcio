@@ -153,6 +153,536 @@
            MAIN CONTENT
         ========================================== */
 
+        .main-content {
+
+            flex-grow: 1;
+
+            padding: 35px;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: flex-start;
+
+            overflow-y: auto;
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    #1e293b 0%,
+                    #0f172a 100%
+                );
+        }
+
+
+        .container {
+
+            text-align: center;
+
+            border: 4px solid #38bdf8;
+
+            padding: 36px;
+
+            border-radius: 20px;
+
+            background: #1e293b;
+
+            max-width: 980px;
+
+            width: 100%;
+
+            box-shadow:
+                0 10px 30px
+                rgba(56, 189, 248, 0.20);
+        }
+
+
+        /* ==========================================
+           PAGINE
+        ========================================== */
+
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+
+        /* ==========================================
+           TITOLI
+        ========================================== */
+
+        h1 {
+
+            margin-top: 0;
+
+            font-family: Impact, Arial, sans-serif;
+
+            font-size: 38px;
+
+            color: #38bdf8;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1px;
+        }
+
+
+        /* ==========================================
+           COUNTDOWN
+        ========================================== */
+
+        #countdown {
+
+            margin: 25px 0;
+
+            color: #f43f5e;
+
+            font-size: 60px;
+
+            font-weight: bold;
+
+            font-family: monospace;
+
+            text-shadow:
+                0 0 15px
+                rgba(244, 63, 94, 0.65);
+        }
+
+        #countdown.warning {
+
+            animation:
+                pulseCountdown
+                0.7s infinite alternate;
+        }
+
+        @keyframes pulseCountdown {
+
+            from {
+                transform: scale(1);
+
+                text-shadow:
+                    0 0 10px
+                    rgba(244, 63, 94, 0.6);
+            }
+
+            to {
+                transform: scale(1.08);
+
+                text-shadow:
+                    0 0 30px
+                    rgba(244, 63, 94, 1);
+            }
+        }
+
+
+        /* ==========================================
+           MERCATO APERTO
+        ========================================== */
+
+        #countdown.open {
+
+            color: #22c55e;
+
+            font-size: 48px;
+
+            animation:
+                marketOpen
+                0.8s infinite alternate;
+        }
+
+        @keyframes marketOpen {
+
+            from {
+
+                transform: scale(1);
+
+                text-shadow:
+                    0 0 10px #22c55e;
+            }
+
+            to {
+
+                transform: scale(1.05);
+
+                text-shadow:
+                    0 0 35px #22c55e;
+            }
+        }
+
+
+        /* ==========================================
+           TRANSFER WINDOW
+        ========================================== */
+
+        #transfer-window {
+
+            display: none;
+
+            margin: 15px auto 20px auto;
+
+            padding: 14px 20px;
+
+            max-width: 520px;
+
+            border: 1px solid #f43f5e;
+
+            border-radius: 12px;
+
+            background:
+                rgba(244, 63, 94, 0.08);
+
+            box-shadow:
+                0 0 12px
+                rgba(244, 63, 94, 0.15);
+        }
+
+        .transfer-title {
+
+            margin-bottom: 7px;
+
+            color: #f43f5e;
+
+            font-size: 19px;
+
+            font-weight: bold;
+
+            letter-spacing: 1px;
+        }
+
+        .transfer-dates {
+
+            color: #e2e8f0;
+
+            font-size: 15px;
+
+            font-weight: bold;
+        }
+
+        #transfer-remaining {
+
+            margin-top: 8px;
+
+            color: #94a3b8;
+
+            font-size: 14px;
+
+            font-family: monospace;
+        }
+
+
+        /* ==========================================
+           TEAM MOTTO LIST
+        ========================================== */
+
+        .team-list {
+
+            margin-top: 30px;
+
+            padding: 20px;
+
+            text-align: left;
+
+            background: #0f172a;
+
+            border: 1px solid #334155;
+
+            border-radius: 12px;
+        }
+
+        .team-row {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            gap: 20px;
+
+            padding: 10px 0;
+
+            border-bottom:
+                1px solid #1e293b;
+
+            font-size: 14px;
+        }
+
+        .team-row:last-child {
+            border-bottom: none;
+        }
+
+        .team-name {
+
+            color: #38bdf8;
+
+            font-weight: bold;
+
+            white-space: nowrap;
+        }
+
+        .team-motto {
+
+            color: #94a3b8;
+
+            font-style: italic;
+
+            text-align: right;
+        }
+
+
+        /* ==========================================
+           ACPICCHIA TEAM PAGE
+        ========================================== */
+
+        .roster-page {
+
+            text-align: left;
+        }
+
+        .team-header {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 18px;
+
+            margin-bottom: 24px;
+
+            padding: 16px 20px;
+
+            background: #0f172a;
+
+            border: 1px solid #334155;
+
+            border-radius: 12px;
+        }
+
+        /* ==========================================
+           IFRAME RATING CLASSIFICA & CRITERI
+        ========================================== */
+
+        .iframe-wrapper {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+
+        .iframe-container {
+            width: 980px; 
+            height: 400px; 
+            overflow: hidden; 
+            position: relative;
+            background-color: transparent;
+            border-radius: 12px;
+        }
+
+        .iframe-container iframe {
+            width: 1200px; 
+            height: 1000px; 
+            position: absolute; 
+            top: -235px; 
+            left: -200px; 
+            border: none; 
+            pointer-events: none;
+        }
+
+        .update-date {
+            font-size: 14px;
+            color: #94a3b8;
+            margin: 15px 0 25px 0;
+            text-align: left;
+            font-style: italic;
+        }
+
+        .criteri-box {
+            background-color: #0f172a;
+            border: 1px solid #334155;
+            border-radius: 12px;
+            padding: 22px;
+            text-align: left;
+            width: 100%;
+        }
+
+        .criteri-box h3 {
+            margin-top: 0;
+            color: #38bdf8;
+            font-size: 16px;
+            font-weight: bold;
+            border-bottom: 1px solid #334155;
+            padding-bottom: 10px;
+            margin-bottom: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .criteri-box ol {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .criteri-box li {
+            font-size: 14px;
+            color: #cbd5e1;
+            line-height: 1.7;
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>FANTACALCIO 2026/27</title>
+
+
+    <style>
+
+        /* ==========================================
+           GENERALE
+        ========================================== */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+
+            height: 100vh;
+            overflow: hidden;
+
+            display: flex;
+
+            background: #0f172a;
+            color: #ffffff;
+
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+
+        /* ==========================================
+           SIDEBAR
+        ========================================== */
+
+        .sidebar {
+
+            width: 260px;
+            flex-shrink: 0;
+
+            background: #1e293b;
+
+            padding: 20px 15px;
+
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+
+            border-right: 2px solid #334155;
+
+            overflow-y: auto;
+        }
+
+        .sidebar-title {
+
+            font-family: Impact, Arial, sans-serif;
+
+            font-size: 22px;
+
+            color: #38bdf8;
+
+            text-align: center;
+
+            margin-bottom: 15px;
+
+            letter-spacing: 1px;
+
+            text-transform: uppercase;
+        }
+
+
+        /* ==========================================
+           MENU BUTTONS
+        ========================================== */
+
+        .menu-btn {
+
+            background: #0f172a;
+
+            color: #94a3b8;
+
+            border: 1px solid #334155;
+
+            padding: 12px 15px;
+
+            border-radius: 8px;
+
+            cursor: pointer;
+
+            text-align: left;
+
+            font-weight: bold;
+
+            font-size: 14px;
+
+            transition: all 0.25s ease;
+
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .menu-btn:hover {
+
+            background: #38bdf8;
+
+            color: #0f172a;
+
+            border-color: #38bdf8;
+
+            transform: translateX(5px);
+        }
+
+        .menu-btn.active {
+
+            background: #e11d48;
+
+            color: white;
+
+            border-color: #e11d48;
+
+            box-shadow:
+                0 0 12px
+                rgba(225, 29, 72, 0.55);
+        }
+
+        .menu-btn.special {
+
+            background: #22c55e;
+
+            color: #0f172a;
+
+            border-color: #22c55e;
+        }
+
+        .menu-btn.special:hover {
+
+            background: #15803d;
+
+            color: white;
+        }
+
+
+        /* ==========================================
+           MAIN CONTENT
+        ========================================== */
+
 .main-content {
 
     flex-grow: 1;
