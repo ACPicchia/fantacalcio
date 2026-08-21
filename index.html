@@ -698,6 +698,91 @@
 
 
         /* ==========================================
+           COLORI SQUADRE - PAGINE ROSA
+        ========================================== */
+
+        .team-logo-emoji {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 38px;
+            line-height: 1;
+        }
+
+        .roster-page.team-themed .team-header,
+        .roster-page.team-themed .role-box,
+        .roster-page.team-themed .lineup-note {
+            border-color: var(--team-accent);
+        }
+
+        .roster-page.team-themed .team-header-text h3,
+        .roster-page.team-themed .lineup-note strong {
+            color: var(--team-accent);
+        }
+
+        .roster-page.team-themed .team-logo {
+            border-color: var(--team-accent);
+            box-shadow: 0 0 15px rgba(var(--team-accent-rgb), 0.30);
+        }
+
+        .roster-page.team-themed .player-card:hover {
+            border-color: var(--team-accent);
+        }
+
+        .roster-page.team-themed .player-price,
+        .roster-page.team-themed .credit-badge {
+            background: var(--team-accent);
+            color: var(--team-accent-text);
+        }
+
+        .roster-page.team-themed .lineup-note {
+            background: rgba(var(--team-accent-rgb), 0.08);
+        }
+
+        .team-rcursus {
+            --team-accent: #b7791f;
+            --team-accent-rgb: 183, 121, 31;
+            --team-accent-text: #ffffff;
+        }
+
+        .team-ussalento {
+            --team-accent: #f59e0b;
+            --team-accent-rgb: 245, 158, 11;
+            --team-accent-text: #0f172a;
+        }
+
+        .team-chamal {
+            --team-accent: #84cc16;
+            --team-accent-rgb: 132, 204, 22;
+            --team-accent-text: #0f172a;
+        }
+
+        .team-ufo {
+            --team-accent: #a855f7;
+            --team-accent-rgb: 168, 85, 247;
+            --team-accent-text: #ffffff;
+        }
+
+        .team-sscbrake {
+            --team-accent: #b91c1c;
+            --team-accent-rgb: 185, 28, 28;
+            --team-accent-text: #ffffff;
+        }
+
+        .team-zikken {
+            --team-accent: #10b981;
+            --team-accent-rgb: 16, 185, 129;
+            --team-accent-text: #0f172a;
+        }
+
+        .team-branco {
+            --team-accent: #64748b;
+            --team-accent-rgb: 100, 116, 139;
+            --team-accent-text: #ffffff;
+        }
+
+
+        /* ==========================================
            CLASSIFICA - SUB TABS
         ========================================== */
 
@@ -1324,6 +1409,48 @@
             }
         }
 
+    
+        /* ==========================================
+           COLORE CORNICE ESTERNA PER SQUADRA
+           ACPicchia resta con il blu originale.
+        ========================================== */
+
+        .container:has(#rcursus.active) {
+            border-color: #b7791f;
+            box-shadow: 0 10px 30px rgba(183, 121, 31, 0.22);
+        }
+
+        .container:has(#ussalento.active) {
+            border-color: #f59e0b;
+            box-shadow: 0 10px 30px rgba(245, 158, 11, 0.22);
+        }
+
+        .container:has(#chamal.active) {
+            border-color: #84cc16;
+            box-shadow: 0 10px 30px rgba(132, 204, 22, 0.22);
+        }
+
+        .container:has(#ufo.active) {
+            border-color: #a855f7;
+            box-shadow: 0 10px 30px rgba(168, 85, 247, 0.22);
+        }
+
+        .container:has(#sscbrake.active) {
+            border-color: #b91c1c;
+            box-shadow: 0 10px 30px rgba(185, 28, 28, 0.22);
+        }
+
+        .container:has(#zikken.active) {
+            border-color: #10b981;
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.22);
+        }
+
+        .container:has(#branco.active) {
+            border-color: #64748b;
+            box-shadow: 0 10px 30px rgba(100, 116, 139, 0.22);
+        }
+
+
     </style>
 
 </head>
@@ -1626,12 +1753,6 @@
                 🔥 FANTAPUNTI
             </button>
 
-            <button
-                class="classifica-tab"
-                onclick="showClassificaTab('giornata', this)">
-                📅 GIORNATA PER GIORNATA
-            </button>
-
         </div>
 
 
@@ -1836,19 +1957,6 @@
 
         </div>
 
-
-        <!-- GIORNATA PER GIORNATA -->
-
-        <div
-            id="classifica-giornata"
-            class="classifica-panel">
-
-            <div class="classifica-coming">
-                📅 <strong>GIORNATA PER GIORNATA</strong><br><br>
-                COMING SOON...
-            </div>
-
-        </div>
 
     </div>
 
@@ -2260,29 +2368,353 @@
     id="rcursus"
     class="page">
 
-    <div class="coming-soon-box">
+    <div class="roster-page team-themed team-rcursus">
 
-        <div class="coming-soon-title">
-            RC Ursus Urs 🐻
+        <!-- TEAM HEADER -->
+
+        <div class="team-header">
+
+            <div
+                class="team-logo team-logo-emoji"
+                aria-label="RC Ursus Urs">
+                🐻
+            </div>
+
+            <div class="team-header-text">
+
+                <h3>
+                    RC Ursus Urs
+                </h3>
+
+                <p>
+                    Rosa ufficiale 2026/27
+                </p>
+
+                <div class="credit-badge">
+                    💰 Crediti residui: 18
+                </div>
+
+            </div>
+
         </div>
 
-        <p style="color:#94a3b8;">
-            Rosa e fanta-milioni rimasti.
-        </p>
 
-        <p style="
-            color:#f43f5e;
-            font-weight:bold;
-            font-family:monospace;
-            font-size:24px;
-        ">
-            COMING SOON...
-        </p>
+        <!-- ROSA -->
+
+        <div class="roster-grid">
+
+
+            <!-- PORTIERI -->
+
+            <div class="role-box">
+
+                <h4 class="role-title portieri">
+                    🧤 Portieri
+                </h4>
+
+                <div class="player-list">
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Butez</div>
+                            <div class="player-team">Como</div>
+                        </div>
+                        <div class="player-price">32</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Vicario</div>
+                            <div class="player-team">Juventus</div>
+                        </div>
+                        <div class="player-price">25</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Milinkovic</div>
+                            <div class="player-team">Napoli</div>
+                        </div>
+                        <div class="player-price">12</div>
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- DIFENSORI -->
+
+            <div class="role-box">
+
+                <h4 class="role-title difensori">
+                    🛡️ Difensori
+                </h4>
+
+                <div class="player-list">
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Bremer</div>
+                            <div class="player-team">Juventus</div>
+                        </div>
+                        <div class="player-price">35</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Pavlovic</div>
+                            <div class="player-team">Milan</div>
+                        </div>
+                        <div class="player-price">33</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Bisseck</div>
+                            <div class="player-team">Inter</div>
+                        </div>
+                        <div class="player-price">26</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Celik</div>
+                            <div class="player-team">Juventus</div>
+                        </div>
+                        <div class="player-price">20</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Bartesaghi</div>
+                            <div class="player-team">Milan</div>
+                        </div>
+                        <div class="player-price">18</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Martin</div>
+                            <div class="player-team">Genoa</div>
+                        </div>
+                        <div class="player-price">18</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Zortea</div>
+                            <div class="player-team">Bologna</div>
+                        </div>
+                        <div class="player-price">14</div>
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- CENTROCAMPISTI -->
+
+            <div class="role-box">
+
+                <h4 class="role-title centrocampisti">
+                    🎯 Centrocampisti
+                </h4>
+
+                <div class="player-list">
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Calhanoglu</div>
+                            <div class="player-team">Inter</div>
+                        </div>
+                        <div class="player-price">57</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Ederson</div>
+                            <div class="player-team">Atalanta</div>
+                        </div>
+                        <div class="player-price">42</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Vlasic</div>
+                            <div class="player-team">Torino</div>
+                        </div>
+                        <div class="player-price">42</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Alajbegovic</div>
+                            <div class="player-team">Juventus</div>
+                        </div>
+                        <div class="player-price">35</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Atta</div>
+                            <div class="player-team">Fiorentina</div>
+                        </div>
+                        <div class="player-price">32</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Saelemaekers</div>
+                            <div class="player-team">Milan</div>
+                        </div>
+                        <div class="player-price">31</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Moreira</div>
+                            <div class="player-team">Milan</div>
+                        </div>
+                        <div class="player-price">26</div>
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- ATTACCANTI -->
+
+            <div class="role-box">
+
+                <h4 class="role-title attaccanti">
+                    ⚽ Attaccanti
+                </h4>
+
+                <div class="player-list">
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Malen</div>
+                            <div class="player-team">Roma</div>
+                        </div>
+                        <div class="player-price">79</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Diao</div>
+                            <div class="player-team">Como</div>
+                        </div>
+                        <div class="player-price">53</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Dybala</div>
+                            <div class="player-team">Roma</div>
+                        </div>
+                        <div class="player-price">47</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Laurienté</div>
+                            <div class="player-team">Sassuolo</div>
+                        </div>
+                        <div class="player-price">46</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Kevin Carlos</div>
+                            <div class="player-team">Cagliari</div>
+                        </div>
+                        <div class="player-price">21</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Yeboah</div>
+                            <div class="player-team">Venezia</div>
+                        </div>
+                        <div class="player-price">18</div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- FORMAZIONE -->
+
+        <div class="lineup-note">
+
+            <strong>
+                ⚽ Modulo vincente:
+            </strong>
+            3-4-3
+
+            <br><br>
+
+            <strong>🧤 Portiere:</strong>
+            Butez
+
+            <br>
+
+            <strong>🛡️ Difesa:</strong>
+            Bremer • Pavlovic • Bisseck
+
+            <br>
+
+            <strong>🎯 Centrocampo:</strong>
+            Calhanoglu • Ederson • Vlasic • Alajbegovic
+
+            <br>
+
+            <strong>⚽ Attacco:</strong>
+            Malen • Diao • Dybala
+
+            <br><br>
+
+            <span style="color:#94a3b8;">
+                Prime alternative:
+                Vicario • Milinkovic • Celik • Bartesaghi • Martin • Zortea • Atta • Saelemaekers • Moreira • Laurienté • Kevin Carlos • Yeboah
+            </span>
+
+        </div>
+
+
+        <!-- BUDGET -->
+
+        <div
+            style="
+                margin-top:18px;
+                padding:14px 18px;
+                background:#0f172a;
+                border:1px solid var(--team-accent);
+                border-radius:12px;
+                text-align:center;
+                color:#94a3b8;
+                font-size:14px;
+            "
+        >
+
+            💰 Budget utilizzato:
+            <strong style="color:var(--team-accent);">
+                762 / 780
+            </strong>
+
+            &nbsp;•&nbsp;
+
+            Crediti residui:
+            <strong style="color:var(--team-accent);">
+                18
+            </strong>
+
+        </div>
 
     </div>
 
 </div>
-
 
 
 <!-- ==========================================
@@ -2293,29 +2725,353 @@
     id="ussalento"
     class="page">
 
-    <div class="coming-soon-box">
+    <div class="roster-page team-themed team-ussalento">
 
-        <div class="coming-soon-title">
-            US Salento ☀️
+        <!-- TEAM HEADER -->
+
+        <div class="team-header">
+
+            <div
+                class="team-logo team-logo-emoji"
+                aria-label="US Salento">
+                ☀️
+            </div>
+
+            <div class="team-header-text">
+
+                <h3>
+                    US Salento
+                </h3>
+
+                <p>
+                    Rosa ufficiale 2026/27
+                </p>
+
+                <div class="credit-badge">
+                    💰 Crediti residui: 123
+                </div>
+
+            </div>
+
         </div>
 
-        <p style="color:#94a3b8;">
-            Rosa e fanta-milioni rimasti.
-        </p>
 
-        <p style="
-            color:#f43f5e;
-            font-weight:bold;
-            font-family:monospace;
-            font-size:24px;
-        ">
-            COMING SOON...
-        </p>
+        <!-- ROSA -->
+
+        <div class="roster-grid">
+
+
+            <!-- PORTIERI -->
+
+            <div class="role-box">
+
+                <h4 class="role-title portieri">
+                    🧤 Portieri
+                </h4>
+
+                <div class="player-list">
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Maignan</div>
+                            <div class="player-team">Milan</div>
+                        </div>
+                        <div class="player-price">34</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Meret</div>
+                            <div class="player-team">Napoli</div>
+                        </div>
+                        <div class="player-price">23</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Perin</div>
+                            <div class="player-team">Juventus</div>
+                        </div>
+                        <div class="player-price">6</div>
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- DIFENSORI -->
+
+            <div class="role-box">
+
+                <h4 class="role-title difensori">
+                    🛡️ Difensori
+                </h4>
+
+                <div class="player-list">
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Stones</div>
+                            <div class="player-team">Inter</div>
+                        </div>
+                        <div class="player-price">28</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Chalobah</div>
+                            <div class="player-team">Como</div>
+                        </div>
+                        <div class="player-price">27</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Dodo</div>
+                            <div class="player-team">Fiorentina</div>
+                        </div>
+                        <div class="player-price">27</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Cambiaso</div>
+                            <div class="player-team">Juventus</div>
+                        </div>
+                        <div class="player-price">25</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Miranda J.</div>
+                            <div class="player-team">Bologna</div>
+                        </div>
+                        <div class="player-price">21</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Marusic</div>
+                            <div class="player-team">Lazio</div>
+                        </div>
+                        <div class="player-price">16</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Veiga D.</div>
+                            <div class="player-team">Lecce</div>
+                        </div>
+                        <div class="player-price">16</div>
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- CENTROCAMPISTI -->
+
+            <div class="role-box">
+
+                <h4 class="role-title centrocampisti">
+                    🎯 Centrocampisti
+                </h4>
+
+                <div class="player-list">
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Conceicao</div>
+                            <div class="player-team">Juventus</div>
+                        </div>
+                        <div class="player-price">39</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Perrone</div>
+                            <div class="player-team">Como</div>
+                        </div>
+                        <div class="player-price">38</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Bernardeschi</div>
+                            <div class="player-team">Bologna</div>
+                        </div>
+                        <div class="player-price">36</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Loftus Cheek</div>
+                            <div class="player-team">Milan</div>
+                        </div>
+                        <div class="player-price">29</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Thorstvedt</div>
+                            <div class="player-team">Sassuolo</div>
+                        </div>
+                        <div class="player-price">25</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Traore</div>
+                            <div class="player-team">Genoa</div>
+                        </div>
+                        <div class="player-price">18</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Berisha</div>
+                            <div class="player-team">Lecce</div>
+                        </div>
+                        <div class="player-price">15</div>
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- ATTACCANTI -->
+
+            <div class="role-box">
+
+                <h4 class="role-title attaccanti">
+                    ⚽ Attaccanti
+                </h4>
+
+                <div class="player-list">
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Kolo Muani</div>
+                            <div class="player-team">Juventus</div>
+                        </div>
+                        <div class="player-price">78</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Berardi</div>
+                            <div class="player-team">Sassuolo</div>
+                        </div>
+                        <div class="player-price">59</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Piccoli</div>
+                            <div class="player-team">Bologna</div>
+                        </div>
+                        <div class="player-price">29</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Geubbels</div>
+                            <div class="player-team">Lecce</div>
+                        </div>
+                        <div class="player-price">28</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Ratkov</div>
+                            <div class="player-team">Lazio</div>
+                        </div>
+                        <div class="player-price">27</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Bowie</div>
+                            <div class="player-team">Sassuolo</div>
+                        </div>
+                        <div class="player-price">13</div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- FORMAZIONE -->
+
+        <div class="lineup-note">
+
+            <strong>
+                ⚽ Modulo vincente:
+            </strong>
+            4-4-2
+
+            <br><br>
+
+            <strong>🧤 Portiere:</strong>
+            Maignan
+
+            <br>
+
+            <strong>🛡️ Difesa:</strong>
+            Stones • Chalobah • Dodo • Cambiaso
+
+            <br>
+
+            <strong>🎯 Centrocampo:</strong>
+            Conceicao • Perrone • Bernardeschi • Loftus Cheek
+
+            <br>
+
+            <strong>⚽ Attacco:</strong>
+            Kolo Muani • Berardi
+
+            <br><br>
+
+            <span style="color:#94a3b8;">
+                Prime alternative:
+                Meret • Perin • Miranda J. • Marusic • Veiga D. • Thorstvedt • Traore • Berisha • Piccoli • Geubbels • Ratkov • Bowie
+            </span>
+
+        </div>
+
+
+        <!-- BUDGET -->
+
+        <div
+            style="
+                margin-top:18px;
+                padding:14px 18px;
+                background:#0f172a;
+                border:1px solid var(--team-accent);
+                border-radius:12px;
+                text-align:center;
+                color:#94a3b8;
+                font-size:14px;
+            "
+        >
+
+            💰 Budget utilizzato:
+            <strong style="color:var(--team-accent);">
+                657 / 780
+            </strong>
+
+            &nbsp;•&nbsp;
+
+            Crediti residui:
+            <strong style="color:var(--team-accent);">
+                123
+            </strong>
+
+        </div>
 
     </div>
 
 </div>
-
 
 
 <!-- ==========================================
@@ -2326,29 +3082,353 @@
     id="chamal"
     class="page">
 
-    <div class="coming-soon-box">
+    <div class="roster-page team-themed team-chamal">
 
-        <div class="coming-soon-title">
-            Chamal 🦎
+        <!-- TEAM HEADER -->
+
+        <div class="team-header">
+
+            <div
+                class="team-logo team-logo-emoji"
+                aria-label="Chamal">
+                🦎
+            </div>
+
+            <div class="team-header-text">
+
+                <h3>
+                    Chamal
+                </h3>
+
+                <p>
+                    Rosa ufficiale 2026/27
+                </p>
+
+                <div class="credit-badge">
+                    💰 Crediti residui: 118
+                </div>
+
+            </div>
+
         </div>
 
-        <p style="color:#94a3b8;">
-            Rosa e fanta-milioni rimasti.
-        </p>
 
-        <p style="
-            color:#f43f5e;
-            font-weight:bold;
-            font-family:monospace;
-            font-size:24px;
-        ">
-            COMING SOON...
-        </p>
+        <!-- ROSA -->
+
+        <div class="roster-grid">
+
+
+            <!-- PORTIERI -->
+
+            <div class="role-box">
+
+                <h4 class="role-title portieri">
+                    🧤 Portieri
+                </h4>
+
+                <div class="player-list">
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Okoye</div>
+                            <div class="player-team">Udinese</div>
+                        </div>
+                        <div class="player-price">20</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Muric</div>
+                            <div class="player-team">Sassuolo</div>
+                        </div>
+                        <div class="player-price">16</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Turati</div>
+                            <div class="player-team">Sassuolo</div>
+                        </div>
+                        <div class="player-price">4</div>
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- DIFENSORI -->
+
+            <div class="role-box">
+
+                <h4 class="role-title difensori">
+                    🛡️ Difensori
+                </h4>
+
+                <div class="player-list">
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Bastoni A.</div>
+                            <div class="player-team">Inter</div>
+                        </div>
+                        <div class="player-price">34</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Akanji</div>
+                            <div class="player-team">Inter</div>
+                        </div>
+                        <div class="player-price">30</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Ndicka</div>
+                            <div class="player-team">Roma</div>
+                        </div>
+                        <div class="player-price">29</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Solet</div>
+                            <div class="player-team">Udinese</div>
+                        </div>
+                        <div class="player-price">28</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Gila</div>
+                            <div class="player-team">Milan</div>
+                        </div>
+                        <div class="player-price">22</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Vasquez</div>
+                            <div class="player-team">Genoa</div>
+                        </div>
+                        <div class="player-price">19</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Olivera</div>
+                            <div class="player-team">Napoli</div>
+                        </div>
+                        <div class="player-price">15</div>
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- CENTROCAMPISTI -->
+
+            <div class="role-box">
+
+                <h4 class="role-title centrocampisti">
+                    🎯 Centrocampisti
+                </h4>
+
+                <div class="player-list">
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">McTominay</div>
+                            <div class="player-team">Napoli</div>
+                        </div>
+                        <div class="player-price">61</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Kone M.</div>
+                            <div class="player-team">Roma</div>
+                        </div>
+                        <div class="player-price">44</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Santos</div>
+                            <div class="player-team">Napoli</div>
+                        </div>
+                        <div class="player-price">42</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Mandragora</div>
+                            <div class="player-team">Fiorentina</div>
+                        </div>
+                        <div class="player-price">25</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Frattesi</div>
+                            <div class="player-team">Lazio</div>
+                        </div>
+                        <div class="player-price">23</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Vergara</div>
+                            <div class="player-team">Napoli</div>
+                        </div>
+                        <div class="player-price">19</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Volpato</div>
+                            <div class="player-team">Sassuolo</div>
+                        </div>
+                        <div class="player-price">19</div>
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- ATTACCANTI -->
+
+            <div class="role-box">
+
+                <h4 class="role-title attaccanti">
+                    ⚽ Attaccanti
+                </h4>
+
+                <div class="player-list">
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Soule</div>
+                            <div class="player-team">Roma</div>
+                        </div>
+                        <div class="player-price">53</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Esposito Pio</div>
+                            <div class="player-team">Inter</div>
+                        </div>
+                        <div class="player-price">49</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Pellegrino</div>
+                            <div class="player-team">Fiorentina</div>
+                        </div>
+                        <div class="player-price">36</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Stulic</div>
+                            <div class="player-team">Lecce</div>
+                        </div>
+                        <div class="player-price">35</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Lucca</div>
+                            <div class="player-team">Napoli</div>
+                        </div>
+                        <div class="player-price">23</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Cutrone</div>
+                            <div class="player-team">Monza</div>
+                        </div>
+                        <div class="player-price">16</div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- FORMAZIONE -->
+
+        <div class="lineup-note">
+
+            <strong>
+                ⚽ Modulo vincente:
+            </strong>
+            3-5-2
+
+            <br><br>
+
+            <strong>🧤 Portiere:</strong>
+            Okoye
+
+            <br>
+
+            <strong>🛡️ Difesa:</strong>
+            Bastoni A. • Akanji • Ndicka
+
+            <br>
+
+            <strong>🎯 Centrocampo:</strong>
+            McTominay • Kone M. • Santos • Mandragora • Frattesi
+
+            <br>
+
+            <strong>⚽ Attacco:</strong>
+            Soule • Esposito Pio
+
+            <br><br>
+
+            <span style="color:#94a3b8;">
+                Prime alternative:
+                Muric • Turati • Solet • Gila • Vasquez • Olivera • Vergara • Volpato • Pellegrino • Stulic • Lucca • Cutrone
+            </span>
+
+        </div>
+
+
+        <!-- BUDGET -->
+
+        <div
+            style="
+                margin-top:18px;
+                padding:14px 18px;
+                background:#0f172a;
+                border:1px solid var(--team-accent);
+                border-radius:12px;
+                text-align:center;
+                color:#94a3b8;
+                font-size:14px;
+            "
+        >
+
+            💰 Budget utilizzato:
+            <strong style="color:var(--team-accent);">
+                662 / 780
+            </strong>
+
+            &nbsp;•&nbsp;
+
+            Crediti residui:
+            <strong style="color:var(--team-accent);">
+                118
+            </strong>
+
+        </div>
 
     </div>
 
 </div>
-
 
 
 <!-- ==========================================
@@ -2359,29 +3439,353 @@
     id="ufo"
     class="page">
 
-    <div class="coming-soon-box">
+    <div class="roster-page team-themed team-ufo">
 
-        <div class="coming-soon-title">
-            UFO RELOADED 🛸
+        <!-- TEAM HEADER -->
+
+        <div class="team-header">
+
+            <div
+                class="team-logo team-logo-emoji"
+                aria-label="UFO RELOADED">
+                🛸
+            </div>
+
+            <div class="team-header-text">
+
+                <h3>
+                    UFO RELOADED
+                </h3>
+
+                <p>
+                    Rosa ufficiale 2026/27
+                </p>
+
+                <div class="credit-badge">
+                    💰 Crediti residui: 65
+                </div>
+
+            </div>
+
         </div>
 
-        <p style="color:#94a3b8;">
-            Rosa e fanta-milioni rimasti.
-        </p>
 
-        <p style="
-            color:#f43f5e;
-            font-weight:bold;
-            font-family:monospace;
-            font-size:24px;
-        ">
-            COMING SOON...
-        </p>
+        <!-- ROSA -->
+
+        <div class="roster-grid">
+
+
+            <!-- PORTIERI -->
+
+            <div class="role-box">
+
+                <h4 class="role-title portieri">
+                    🧤 Portieri
+                </h4>
+
+                <div class="player-list">
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Carnesecchi</div>
+                            <div class="player-team">Atalanta</div>
+                        </div>
+                        <div class="player-price">33</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Bijlow</div>
+                            <div class="player-team">Genoa</div>
+                        </div>
+                        <div class="player-price">19</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Sportiello</div>
+                            <div class="player-team">Atalanta</div>
+                        </div>
+                        <div class="player-price">1</div>
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- DIFENSORI -->
+
+            <div class="role-box">
+
+                <h4 class="role-title difensori">
+                    🛡️ Difensori
+                </h4>
+
+                <div class="player-list">
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Rrahmani</div>
+                            <div class="player-team">Napoli</div>
+                        </div>
+                        <div class="player-price">26</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Ramon</div>
+                            <div class="player-team">Como</div>
+                        </div>
+                        <div class="player-price">25</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Lucumi</div>
+                            <div class="player-team">Juventus</div>
+                        </div>
+                        <div class="player-price">20</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Delprato</div>
+                            <div class="player-team">Parma</div>
+                        </div>
+                        <div class="player-price">18</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Dragusin</div>
+                            <div class="player-team">Fiorentina</div>
+                        </div>
+                        <div class="player-price">18</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Norton Cuffy</div>
+                            <div class="player-team">Genoa</div>
+                        </div>
+                        <div class="player-price">17</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Joao Mario</div>
+                            <div class="player-team">Fiorentina</div>
+                        </div>
+                        <div class="player-price">14</div>
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- CENTROCAMPISTI -->
+
+            <div class="role-box">
+
+                <h4 class="role-title centrocampisti">
+                    🎯 Centrocampisti
+                </h4>
+
+                <div class="player-list">
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Baturina</div>
+                            <div class="player-team">Como</div>
+                        </div>
+                        <div class="player-price">49</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Da Cunha</div>
+                            <div class="player-team">Como</div>
+                        </div>
+                        <div class="player-price">43</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">McKennie</div>
+                            <div class="player-team">Juventus</div>
+                        </div>
+                        <div class="player-price">43</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Barella</div>
+                            <div class="player-team">Inter</div>
+                        </div>
+                        <div class="player-price">41</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Politano</div>
+                            <div class="player-team">Napoli</div>
+                        </div>
+                        <div class="player-price">35</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Diouf</div>
+                            <div class="player-team">Inter</div>
+                        </div>
+                        <div class="player-price">22</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Gaetano</div>
+                            <div class="player-team">Atalanta</div>
+                        </div>
+                        <div class="player-price">22</div>
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- ATTACCANTI -->
+
+            <div class="role-box">
+
+                <h4 class="role-title attaccanti">
+                    ⚽ Attaccanti
+                </h4>
+
+                <div class="player-list">
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Thuram</div>
+                            <div class="player-team">Inter</div>
+                        </div>
+                        <div class="player-price">74</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Douvikas</div>
+                            <div class="player-team">Como</div>
+                        </div>
+                        <div class="player-price">73</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Dovbyk</div>
+                            <div class="player-team">Bologna</div>
+                        </div>
+                        <div class="player-price">44</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Raspadori</div>
+                            <div class="player-team">Atalanta</div>
+                        </div>
+                        <div class="player-price">41</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Adams A.</div>
+                            <div class="player-team">Venezia</div>
+                        </div>
+                        <div class="player-price">22</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Ghedjemis</div>
+                            <div class="player-team">Frosinone</div>
+                        </div>
+                        <div class="player-price">15</div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- FORMAZIONE -->
+
+        <div class="lineup-note">
+
+            <strong>
+                ⚽ Modulo vincente:
+            </strong>
+            4-4-2
+
+            <br><br>
+
+            <strong>🧤 Portiere:</strong>
+            Carnesecchi
+
+            <br>
+
+            <strong>🛡️ Difesa:</strong>
+            Rrahmani • Ramon • Lucumi • Delprato
+
+            <br>
+
+            <strong>🎯 Centrocampo:</strong>
+            Baturina • Da Cunha • McKennie • Barella
+
+            <br>
+
+            <strong>⚽ Attacco:</strong>
+            Thuram • Douvikas
+
+            <br><br>
+
+            <span style="color:#94a3b8;">
+                Prime alternative:
+                Bijlow • Sportiello • Dragusin • Norton Cuffy • Joao Mario • Politano • Diouf • Gaetano • Dovbyk • Raspadori • Adams A. • Ghedjemis
+            </span>
+
+        </div>
+
+
+        <!-- BUDGET -->
+
+        <div
+            style="
+                margin-top:18px;
+                padding:14px 18px;
+                background:#0f172a;
+                border:1px solid var(--team-accent);
+                border-radius:12px;
+                text-align:center;
+                color:#94a3b8;
+                font-size:14px;
+            "
+        >
+
+            💰 Budget utilizzato:
+            <strong style="color:var(--team-accent);">
+                715 / 780
+            </strong>
+
+            &nbsp;•&nbsp;
+
+            Crediti residui:
+            <strong style="color:var(--team-accent);">
+                65
+            </strong>
+
+        </div>
 
     </div>
 
 </div>
-
 
 
 <!-- ==========================================
@@ -2392,29 +3796,353 @@
     id="sscbrake"
     class="page">
 
-    <div class="coming-soon-box">
+    <div class="roster-page team-themed team-sscbrake">
 
-        <div class="coming-soon-title">
-            SSC BrakeTheBall 📉
+        <!-- TEAM HEADER -->
+
+        <div class="team-header">
+
+            <div
+                class="team-logo team-logo-emoji"
+                aria-label="SSC BrakeTheBall">
+                📉
+            </div>
+
+            <div class="team-header-text">
+
+                <h3>
+                    SSC BrakeTheBall
+                </h3>
+
+                <p>
+                    Rosa ufficiale 2026/27
+                </p>
+
+                <div class="credit-badge">
+                    💰 Crediti residui: 743
+                </div>
+
+            </div>
+
         </div>
 
-        <p style="color:#94a3b8;">
-            Rosa e fanta-milioni rimasti.
-        </p>
 
-        <p style="
-            color:#f43f5e;
-            font-weight:bold;
-            font-family:monospace;
-            font-size:24px;
-        ">
-            COMING SOON...
-        </p>
+        <!-- ROSA -->
+
+        <div class="roster-grid">
+
+
+            <!-- PORTIERI -->
+
+            <div class="role-box">
+
+                <h4 class="role-title portieri">
+                    🧤 Portieri
+                </h4>
+
+                <div class="player-list">
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Stankovic F.</div>
+                            <div class="player-team">Venezia</div>
+                        </div>
+                        <div class="player-price">15</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Grandi</div>
+                            <div class="player-team">Venezia</div>
+                        </div>
+                        <div class="player-price">1</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Pozzi</div>
+                            <div class="player-team">Venezia</div>
+                        </div>
+                        <div class="player-price">1</div>
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- DIFENSORI -->
+
+            <div class="role-box">
+
+                <h4 class="role-title difensori">
+                    🛡️ Difensori
+                </h4>
+
+                <div class="player-list">
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Balcot</div>
+                            <div class="player-team">Torino</div>
+                        </div>
+                        <div class="player-price">1</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Garofalo</div>
+                            <div class="player-team">Napoli</div>
+                        </div>
+                        <div class="player-price">1</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Junior Ligue</div>
+                            <div class="player-team">Venezia</div>
+                        </div>
+                        <div class="player-price">1</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Kofler</div>
+                            <div class="player-team">Cagliari</div>
+                        </div>
+                        <div class="player-price">1</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Obaretin</div>
+                            <div class="player-team">Napoli</div>
+                        </div>
+                        <div class="player-price">1</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Reale</div>
+                            <div class="player-team">Roma</div>
+                        </div>
+                        <div class="player-price">1</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Vezzosi</div>
+                            <div class="player-team">Sassuolo</div>
+                        </div>
+                        <div class="player-price">1</div>
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- CENTROCAMPISTI -->
+
+            <div class="role-box">
+
+                <h4 class="role-title centrocampisti">
+                    🎯 Centrocampisti
+                </h4>
+
+                <div class="player-list">
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Cinquegrano</div>
+                            <div class="player-team">Sassuolo</div>
+                        </div>
+                        <div class="player-price">1</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Di Paolo</div>
+                            <div class="player-team">Cagliari</div>
+                        </div>
+                        <div class="player-price">1</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Grosso</div>
+                            <div class="player-team">Frosinone</div>
+                        </div>
+                        <div class="player-price">1</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Konate A.S.</div>
+                            <div class="player-team">Parma</div>
+                        </div>
+                        <div class="player-price">1</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Leone K.</div>
+                            <div class="player-team">Sassuolo</div>
+                        </div>
+                        <div class="player-price">1</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Nuamah</div>
+                            <div class="player-team">Sassuolo</div>
+                        </div>
+                        <div class="player-price">1</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Ondoa</div>
+                            <div class="player-team">Monza</div>
+                        </div>
+                        <div class="player-price">1</div>
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- ATTACCANTI -->
+
+            <div class="role-box">
+
+                <h4 class="role-title attaccanti">
+                    ⚽ Attaccanti
+                </h4>
+
+                <div class="player-list">
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Colley M.</div>
+                            <div class="player-team">Frosinone</div>
+                        </div>
+                        <div class="player-price">1</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Esteban</div>
+                            <div class="player-team">Lecce</div>
+                        </div>
+                        <div class="player-price">1</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Fumagalli</div>
+                            <div class="player-team">Como</div>
+                        </div>
+                        <div class="player-price">1</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Gabellini</div>
+                            <div class="player-team">Torino</div>
+                        </div>
+                        <div class="player-price">1</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Serra</div>
+                            <div class="player-team">Lazio</div>
+                        </div>
+                        <div class="player-price">1</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Vlahovic V.</div>
+                            <div class="player-team">Atalanta</div>
+                        </div>
+                        <div class="player-price">1</div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- FORMAZIONE -->
+
+        <div class="lineup-note">
+
+            <strong>
+                ⚽ Modulo vincente:
+            </strong>
+            3-5-2
+
+            <br><br>
+
+            <strong>🧤 Portiere:</strong>
+            Stankovic F.
+
+            <br>
+
+            <strong>🛡️ Difesa:</strong>
+            Balcot • Garofalo • Junior Ligue
+
+            <br>
+
+            <strong>🎯 Centrocampo:</strong>
+            Cinquegrano • Di Paolo • Grosso • Konate A.S. • Leone K.
+
+            <br>
+
+            <strong>⚽ Attacco:</strong>
+            Colley M. • Esteban
+
+            <br><br>
+
+            <span style="color:#94a3b8;">
+                Prime alternative:
+                Grandi • Pozzi • Kofler • Obaretin • Reale • Vezzosi • Nuamah • Ondoa • Fumagalli • Gabellini • Serra • Vlahovic V.
+            </span>
+
+        </div>
+
+
+        <!-- BUDGET -->
+
+        <div
+            style="
+                margin-top:18px;
+                padding:14px 18px;
+                background:#0f172a;
+                border:1px solid var(--team-accent);
+                border-radius:12px;
+                text-align:center;
+                color:#94a3b8;
+                font-size:14px;
+            "
+        >
+
+            💰 Budget utilizzato:
+            <strong style="color:var(--team-accent);">
+                37 / 780
+            </strong>
+
+            &nbsp;•&nbsp;
+
+            Crediti residui:
+            <strong style="color:var(--team-accent);">
+                743
+            </strong>
+
+        </div>
 
     </div>
 
 </div>
-
 
 
 <!-- ==========================================
@@ -2425,29 +4153,353 @@
     id="zikken"
     class="page">
 
-    <div class="coming-soon-box">
+    <div class="roster-page team-themed team-zikken">
 
-        <div class="coming-soon-title">
-            Zikkenfikken.com 💻
+        <!-- TEAM HEADER -->
+
+        <div class="team-header">
+
+            <div
+                class="team-logo team-logo-emoji"
+                aria-label="Zikkenfikken.com">
+                💻
+            </div>
+
+            <div class="team-header-text">
+
+                <h3>
+                    Zikkenfikken.com
+                </h3>
+
+                <p>
+                    Rosa ufficiale 2026/27
+                </p>
+
+                <div class="credit-badge">
+                    💰 Crediti residui: 64
+                </div>
+
+            </div>
+
         </div>
 
-        <p style="color:#94a3b8;">
-            Rosa e fanta-milioni rimasti.
-        </p>
 
-        <p style="
-            color:#f43f5e;
-            font-weight:bold;
-            font-family:monospace;
-            font-size:24px;
-        ">
-            COMING SOON...
-        </p>
+        <!-- ROSA -->
+
+        <div class="roster-grid">
+
+
+            <!-- PORTIERI -->
+
+            <div class="role-box">
+
+                <h4 class="role-title portieri">
+                    🧤 Portieri
+                </h4>
+
+                <div class="player-list">
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">De Gea</div>
+                            <div class="player-team">Fiorentina</div>
+                        </div>
+                        <div class="player-price">24</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Christensen</div>
+                            <div class="player-team">Fiorentina</div>
+                        </div>
+                        <div class="player-price">1</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Lezzerini</div>
+                            <div class="player-team">Fiorentina</div>
+                        </div>
+                        <div class="player-price">1</div>
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- DIFENSORI -->
+
+            <div class="role-box">
+
+                <h4 class="role-title difensori">
+                    🛡️ Difensori
+                </h4>
+
+                <div class="player-list">
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Dimarco</div>
+                            <div class="player-team">Inter</div>
+                        </div>
+                        <div class="player-price">41</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Wesley</div>
+                            <div class="player-team">Roma</div>
+                        </div>
+                        <div class="player-price">39</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Di Lorenzo</div>
+                            <div class="player-team">Napoli</div>
+                        </div>
+                        <div class="player-price">31</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Zappacosta</div>
+                            <div class="player-team">Atalanta</div>
+                        </div>
+                        <div class="player-price">25</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Ahanor</div>
+                            <div class="player-team">Atalanta</div>
+                        </div>
+                        <div class="player-price">18</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Couto</div>
+                            <div class="player-team">Como</div>
+                        </div>
+                        <div class="player-price">14</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Correia</div>
+                            <div class="player-team">Venezia</div>
+                        </div>
+                        <div class="player-price">7</div>
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- CENTROCAMPISTI -->
+
+            <div class="role-box">
+
+                <h4 class="role-title centrocampisti">
+                    🎯 Centrocampisti
+                </h4>
+
+                <div class="player-list">
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Neres</div>
+                            <div class="player-team">Napoli</div>
+                        </div>
+                        <div class="player-price">50</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Zaniolo</div>
+                            <div class="player-team">Udinese</div>
+                        </div>
+                        <div class="player-price">37</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Rowe</div>
+                            <div class="player-team">Bologna</div>
+                        </div>
+                        <div class="player-price">36</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Mastrantuono</div>
+                            <div class="player-team">Fiorentina</div>
+                        </div>
+                        <div class="player-price">33</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Ferguson</div>
+                            <div class="player-team">Bologna</div>
+                        </div>
+                        <div class="player-price">24</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Ndour</div>
+                            <div class="player-team">Fiorentina</div>
+                        </div>
+                        <div class="player-price">19</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Milla</div>
+                            <div class="player-team">Como</div>
+                        </div>
+                        <div class="player-price">15</div>
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- ATTACCANTI -->
+
+            <div class="role-box">
+
+                <h4 class="role-title attaccanti">
+                    ⚽ Attaccanti
+                </h4>
+
+                <div class="player-list">
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Martinez L.</div>
+                            <div class="player-team">Inter</div>
+                        </div>
+                        <div class="player-price">81</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Kean</div>
+                            <div class="player-team">Fiorentina</div>
+                        </div>
+                        <div class="player-price">69</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Leao</div>
+                            <div class="player-team">Milan</div>
+                        </div>
+                        <div class="player-price">67</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Castro</div>
+                            <div class="player-team">Roma</div>
+                        </div>
+                        <div class="player-price">35</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Vitinha</div>
+                            <div class="player-team">Genoa</div>
+                        </div>
+                        <div class="player-price">34</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Toure E.</div>
+                            <div class="player-team">Parma</div>
+                        </div>
+                        <div class="player-price">15</div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- FORMAZIONE -->
+
+        <div class="lineup-note">
+
+            <strong>
+                ⚽ Modulo vincente:
+            </strong>
+            3-5-2
+
+            <br><br>
+
+            <strong>🧤 Portiere:</strong>
+            De Gea
+
+            <br>
+
+            <strong>🛡️ Difesa:</strong>
+            Dimarco • Wesley • Di Lorenzo
+
+            <br>
+
+            <strong>🎯 Centrocampo:</strong>
+            Neres • Zaniolo • Rowe • Mastrantuono • Ferguson
+
+            <br>
+
+            <strong>⚽ Attacco:</strong>
+            Martinez L. • Kean
+
+            <br><br>
+
+            <span style="color:#94a3b8;">
+                Prime alternative:
+                Christensen • Lezzerini • Zappacosta • Ahanor • Couto • Correia • Ndour • Milla • Leao • Castro • Vitinha • Toure E.
+            </span>
+
+        </div>
+
+
+        <!-- BUDGET -->
+
+        <div
+            style="
+                margin-top:18px;
+                padding:14px 18px;
+                background:#0f172a;
+                border:1px solid var(--team-accent);
+                border-radius:12px;
+                text-align:center;
+                color:#94a3b8;
+                font-size:14px;
+            "
+        >
+
+            💰 Budget utilizzato:
+            <strong style="color:var(--team-accent);">
+                716 / 780
+            </strong>
+
+            &nbsp;•&nbsp;
+
+            Crediti residui:
+            <strong style="color:var(--team-accent);">
+                64
+            </strong>
+
+        </div>
 
     </div>
 
 </div>
-
 
 
 <!-- ==========================================
@@ -2458,24 +4510,349 @@
     id="branco"
     class="page">
 
-    <div class="coming-soon-box">
+    <div class="roster-page team-themed team-branco">
 
-        <div class="coming-soon-title">
-            Branco 🐺
+        <!-- TEAM HEADER -->
+
+        <div class="team-header">
+
+            <div
+                class="team-logo team-logo-emoji"
+                aria-label="Branco">
+                🐺
+            </div>
+
+            <div class="team-header-text">
+
+                <h3>
+                    Branco
+                </h3>
+
+                <p>
+                    Rosa ufficiale 2026/27
+                </p>
+
+                <div class="credit-badge">
+                    💰 Crediti residui: 29
+                </div>
+
+            </div>
+
         </div>
 
-        <p style="color:#94a3b8;">
-            Rosa e fanta-milioni rimasti.
-        </p>
 
-        <p style="
-            color:#f43f5e;
-            font-weight:bold;
-            font-family:monospace;
-            font-size:24px;
-        ">
-            COMING SOON...
-        </p>
+        <!-- ROSA -->
+
+        <div class="roster-grid">
+
+
+            <!-- PORTIERI -->
+
+            <div class="role-box">
+
+                <h4 class="role-title portieri">
+                    🧤 Portieri
+                </h4>
+
+                <div class="player-list">
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Svilar</div>
+                            <div class="player-team">Roma</div>
+                        </div>
+                        <div class="player-price">35</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Martinez J.</div>
+                            <div class="player-team">Inter</div>
+                        </div>
+                        <div class="player-price">29</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Provedel</div>
+                            <div class="player-team">Inter</div>
+                        </div>
+                        <div class="player-price">7</div>
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- DIFENSORI -->
+
+            <div class="role-box">
+
+                <h4 class="role-title difensori">
+                    🛡️ Difensori
+                </h4>
+
+                <div class="player-list">
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Spence</div>
+                            <div class="player-team">Inter</div>
+                        </div>
+                        <div class="player-price">31</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Spinazzola</div>
+                            <div class="player-team">Napoli</div>
+                        </div>
+                        <div class="player-price">25</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Jimenez</div>
+                            <div class="player-team">Fiorentina</div>
+                        </div>
+                        <div class="player-price">19</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Molina N.</div>
+                            <div class="player-team">Roma</div>
+                        </div>
+                        <div class="player-price">17</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Bernasconi</div>
+                            <div class="player-team">Atalanta</div>
+                        </div>
+                        <div class="player-price">16</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Valeri</div>
+                            <div class="player-team">Parma</div>
+                        </div>
+                        <div class="player-price">16</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Vojvoda</div>
+                            <div class="player-team">Udinese</div>
+                        </div>
+                        <div class="player-price">15</div>
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- CENTROCAMPISTI -->
+
+            <div class="role-box">
+
+                <h4 class="role-title centrocampisti">
+                    🎯 Centrocampisti
+                </h4>
+
+                <div class="player-list">
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Yildiz</div>
+                            <div class="player-team">Juventus</div>
+                        </div>
+                        <div class="player-price">64</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">De Ketelaere</div>
+                            <div class="player-team">Atalanta</div>
+                        </div>
+                        <div class="player-price">53</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">De Bruyne</div>
+                            <div class="player-team">Napoli</div>
+                        </div>
+                        <div class="player-price">45</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Anguissa</div>
+                            <div class="player-team">Napoli</div>
+                        </div>
+                        <div class="player-price">44</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Zaccagni</div>
+                            <div class="player-team">Lazio</div>
+                        </div>
+                        <div class="player-price">40</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Mora R.</div>
+                            <div class="player-team">Roma</div>
+                        </div>
+                        <div class="player-price">33</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Samardzic</div>
+                            <div class="player-team">Atalanta</div>
+                        </div>
+                        <div class="player-price">21</div>
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- ATTACCANTI -->
+
+            <div class="role-box">
+
+                <h4 class="role-title attaccanti">
+                    ⚽ Attaccanti
+                </h4>
+
+                <div class="player-list">
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Krstovic</div>
+                            <div class="player-team">Atalanta</div>
+                        </div>
+                        <div class="player-price">57</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Orsolini</div>
+                            <div class="player-team">Bologna</div>
+                        </div>
+                        <div class="player-price">55</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Bonny</div>
+                            <div class="player-team">Inter</div>
+                        </div>
+                        <div class="player-price">38</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Colombo</div>
+                            <div class="player-team">Genoa</div>
+                        </div>
+                        <div class="player-price">37</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Gudmundsson</div>
+                            <div class="player-team">Fiorentina</div>
+                        </div>
+                        <div class="player-price">32</div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-left">
+                            <div class="player-name">Romero D.</div>
+                            <div class="player-team">Parma</div>
+                        </div>
+                        <div class="player-price">22</div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- FORMAZIONE -->
+
+        <div class="lineup-note">
+
+            <strong>
+                ⚽ Modulo vincente:
+            </strong>
+            4-3-3
+
+            <br><br>
+
+            <strong>🧤 Portiere:</strong>
+            Svilar
+
+            <br>
+
+            <strong>🛡️ Difesa:</strong>
+            Spence • Spinazzola • Jimenez • Molina N.
+
+            <br>
+
+            <strong>🎯 Centrocampo:</strong>
+            Yildiz • De Ketelaere • De Bruyne
+
+            <br>
+
+            <strong>⚽ Attacco:</strong>
+            Krstovic • Orsolini • Bonny
+
+            <br><br>
+
+            <span style="color:#94a3b8;">
+                Prime alternative:
+                Martinez J. • Provedel • Bernasconi • Valeri • Vojvoda • Anguissa • Zaccagni • Mora R. • Samardzic • Colombo • Gudmundsson • Romero D.
+            </span>
+
+        </div>
+
+
+        <!-- BUDGET -->
+
+        <div
+            style="
+                margin-top:18px;
+                padding:14px 18px;
+                background:#0f172a;
+                border:1px solid var(--team-accent);
+                border-radius:12px;
+                text-align:center;
+                color:#94a3b8;
+                font-size:14px;
+            "
+        >
+
+            💰 Budget utilizzato:
+            <strong style="color:var(--team-accent);">
+                751 / 780
+            </strong>
+
+            &nbsp;•&nbsp;
+
+            Crediti residui:
+            <strong style="color:var(--team-accent);">
+                29
+            </strong>
+
+        </div>
 
     </div>
 
