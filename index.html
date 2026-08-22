@@ -1784,11 +1784,47 @@
                 box-shadow: 0 0 18px rgba(56, 189, 248, 0.22);
             ">
 
-                <div style="width: 980px; height: 400px; overflow: hidden; position: relative; border-radius: 8px;">
+                <div style="
+                    text-align: right;
+                    margin-bottom: 6px;
+                ">
+                    <button
+                        onclick="abilitaFantapazz()"
+                        style="
+                            background:#38bdf8;
+                            color:#0f172a;
+                            border:none;
+                            border-radius:8px;
+                            padding:6px 10px;
+                            font-size:11px;
+                            font-weight:bold;
+                            cursor:pointer;
+                        ">
+                        🔓 ABILITA CLIC PRIVACY
+                    </button>
+                </div>
 
-                    <iframe src="https://www.fantapazz.com/fantacalcio/fantaclassifiche-competizione/339709/1?gironeSelected=1" 
-                            scrolling="no" 
-                            style="width: 1200px; height: 1000px; position: absolute; top: -235px; left: -200px; border: none; pointer-events: none;">
+                <div style="
+                    width: 980px;
+                    height: 400px;
+                    overflow: hidden;
+                    position: relative;
+                    border-radius: 8px;
+                ">
+
+                    <iframe
+                        id="fantapazz-frame"
+                        src="https://www.fantapazz.com/fantacalcio/fantaclassifiche-competizione/339709/1?gironeSelected=1"
+                        scrolling="no"
+                        style="
+                            width: 1200px;
+                            height: 1000px;
+                            position: absolute;
+                            top: -235px;
+                            left: -200px;
+                            border: none;
+                            pointer-events: none;
+                        ">
                     </iframe>
 
                 </div>
@@ -5028,6 +5064,28 @@ function showClassificaTab(tabId, button) {
     if (button) {
         button.classList.add("active");
     }
+}
+
+
+
+/* ==========================================
+   FANTAPAZZ PRIVACY - CLIC TEMPORANEO
+========================================== */
+
+function abilitaFantapazz() {
+
+    const frame =
+        document.getElementById("fantapazz-frame");
+
+    if (!frame) {
+        return;
+    }
+
+    frame.style.pointerEvents = "auto";
+
+    setTimeout(function() {
+        frame.style.pointerEvents = "none";
+    }, 15000);
 }
 
 
