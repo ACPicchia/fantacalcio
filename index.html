@@ -1451,6 +1451,16 @@
         }
 
 
+    
+        /* ==========================================
+           CLASSIFICHE - CORNICE PRINCIPALE PIÙ LARGA
+        ========================================== */
+
+        .container:has(#classifica.active) {
+            max-width: 1160px;
+        }
+
+
     </style>
 
 </head>
@@ -1762,105 +1772,80 @@
             id="classifica-campionato"
             class="classifica-panel active">
 
-            <div class="classifica-table-wrap">
+            <!-- Classifica CAMPIONATO integrata da Fantapazz -->
+            <div style="
+                width: fit-content;
+                max-width: 100%;
+                margin: 0 auto;
+                padding: 8px;
+                background: #1e293b;
+                border: 2px solid #38bdf8;
+                border-radius: 14px;
+                box-shadow: 0 0 18px rgba(56, 189, 248, 0.22);
+            ">
 
-                <table class="classifica-table">
+                <div style="width: 980px; height: 400px; overflow: hidden; position: relative; border-radius: 8px;">
 
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th style="text-align:left;">Squadra</th>
-                            <th>Pt</th>
-                            <th>V</th>
-                            <th>N</th>
-                            <th>P</th>
-                            <th>GF</th>
-                            <th>GS</th>
-                            <th>+/-</th>
-                            <th>FP</th>
-                        </tr>
-                    </thead>
+                    <iframe src="https://www.fantapazz.com/fantacalcio/fantaclassifiche-competizione/339709/1?gironeSelected=1" 
+                            scrolling="no" 
+                            style="width: 1200px; height: 1000px; position: absolute; top: -235px; left: -200px; border: none; pointer-events: none;">
+                    </iframe>
 
-                    <tbody>
-
-                        <tr>
-                            <td>1</td>
-                            <td class="team-cell">🐻 RC Ursus Urs</td>
-                            <td><strong>0</strong></td>
-                            <td>0</td><td>0</td><td>0</td>
-                            <td>0</td><td>0</td><td>0</td><td>0</td>
-                        </tr>
-
-                        <tr>
-                            <td>2</td>
-                            <td class="team-cell">☀️ US Salento</td>
-                            <td><strong>0</strong></td>
-                            <td>0</td><td>0</td><td>0</td>
-                            <td>0</td><td>0</td><td>0</td><td>0</td>
-                        </tr>
-
-                        <tr>
-                            <td>3</td>
-                            <td class="team-cell">🦉 ACPicchia</td>
-                            <td><strong>0</strong></td>
-                            <td>0</td><td>0</td><td>0</td>
-                            <td>0</td><td>0</td><td>0</td><td>0</td>
-                        </tr>
-
-                        <tr>
-                            <td>4</td>
-                            <td class="team-cell">🦎 Chamal</td>
-                            <td><strong>0</strong></td>
-                            <td>0</td><td>0</td><td>0</td>
-                            <td>0</td><td>0</td><td>0</td><td>0</td>
-                        </tr>
-
-                        <tr>
-                            <td>5</td>
-                            <td class="team-cell">🛸 UFO RELOADED</td>
-                            <td><strong>0</strong></td>
-                            <td>0</td><td>0</td><td>0</td>
-                            <td>0</td><td>0</td><td>0</td><td>0</td>
-                        </tr>
-
-                        <tr>
-                            <td>6</td>
-                            <td class="team-cell">📉 SSC BrakeTheBall</td>
-                            <td><strong>0</strong></td>
-                            <td>0</td><td>0</td><td>0</td>
-                            <td>0</td><td>0</td><td>0</td><td>0</td>
-                        </tr>
-
-                        <tr>
-                            <td>7</td>
-                            <td class="team-cell">💻 Zikkenfikken.com</td>
-                            <td><strong>0</strong></td>
-                            <td>0</td><td>0</td><td>0</td>
-                            <td>0</td><td>0</td><td>0</td><td>0</td>
-                        </tr>
-
-                        <tr>
-                            <td>8</td>
-                            <td class="team-cell">🐺 Branco</td>
-                            <td><strong>0</strong></td>
-                            <td>0</td><td>0</td><td>0</td>
-                            <td>0</td><td>0</td><td>0</td><td>0</td>
-                        </tr>
-
-                    </tbody>
-
-                </table>
+                </div>
 
             </div>
 
             <div class="classifica-updated">
-                Ultimo aggiornamento: 15.08.2026
+                Ultimo aggiornamento: <span id="campionato-update-date"></span>
             </div>
+
+            <div style="
+                max-width: 980px;
+                margin: 20px auto 0 auto;
+                padding: 16px 18px;
+                background: #0f172a;
+                border: 1px solid #334155;
+                border-radius: 12px;
+                color: #94a3b8;
+                text-align: left;
+                font-size: 13px;
+                line-height: 1.7;
+            ">
+                <div style="
+                    color: #e2e8f0;
+                    font-weight: bold;
+                    margin-bottom: 8px;
+                ">
+                    Criteri classifica:
+                </div>
+
+                <ol style="
+                    margin: 0;
+                    padding-left: 22px;
+                ">
+                    <li>Punti in classifica</li>
+                    <li>Differenza gol</li>
+                    <li>Gol fatti</li>
+                    <li>Fantapunti (nella competizione)</li>
+                    <li>Chi si è iscritto per primo alla lega</li>
+                </ol>
+            </div>
+
+            <script>
+                document.getElementById("campionato-update-date").textContent =
+                    new Intl.DateTimeFormat("it-IT", {
+                        day: "2-digit",
+                        month: "2-digit",
+                        year: "numeric",
+                        timeZone: "Europe/Zurich"
+                    }).format(new Date());
+            </script>
 
         </div>
 
 
-        <!-- QUALIFICAZIONE CHAMPIONS -->
+
+<!-- QUALIFICAZIONE CHAMPIONS -->
 
         <div
             id="classifica-qualificazione"
