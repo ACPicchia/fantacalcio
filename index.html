@@ -1774,81 +1774,240 @@
 
             <!-- Classifica CAMPIONATO integrata da Fantapazz -->
             <div style="
-                width: fit-content;
-                max-width: 100%;
+                width: 100%;
+                max-width: 1000px;
                 margin: 0 auto;
                 padding: 8px;
+                box-sizing: border-box;
                 background: #1e293b;
                 border: 2px solid #38bdf8;
                 border-radius: 14px;
                 box-shadow: 0 0 18px rgba(56, 189, 248, 0.22);
             ">
 
+                <!--
+                    Il contenitore esterno si adatta alla larghezza disponibile.
+                    Su desktop rimane 980x400 px.
+                    Su tablet e smartphone l'intera classifica viene ridotta
+                    proporzionalmente, senza tagliare colonne.
+                -->
                 <div
-                    id="fantapazz-container"
+                    id="fantapazz-responsive-viewport"
                     style="
-                        width: 980px;
+                        width: 100%;
+                        max-width: 980px;
                         height: 400px;
                         overflow: hidden;
                         position: relative;
                         border-radius: 8px;
+                        margin: 0 auto;
                     "
                 >
 
-                    <iframe
-                        src="https://www.fantapazz.com/fantacalcio/fantaclassifiche-competizione/339709/1?gironeSelected=1"
-                        scrolling="no"
+                    <!--
+                        Stage fisso 980x400: viene scalato automaticamente
+                        solo quando lo spazio disponibile è inferiore a 980 px.
+                    -->
+                    <div
+                        id="fantapazz-responsive-stage"
                         style="
-                            width: 1200px;
-                            height: 1000px;
+                            width: 980px;
+                            height: 400px;
                             position: absolute;
-                            top: -235px;
-                            left: -200px;
-                            border: none;
-                        ">
-                    </iframe>
-
-                    <!--
-                        Area trasparente che blocca lo scroll
-                        sulla parte sinistra della classifica.
-                    -->
-                    <div
-                        style="
-                            position:absolute;
-                            left:0;
-                            top:0;
-                            width:560px;
-                            height:100%;
-                            z-index:10;
-                            background:transparent;
+                            top: 0;
+                            left: 0;
+                            transform-origin: top left;
+                            transform: scale(1);
                         "
-                        onwheel="event.preventDefault();"
-                        ontouchmove="event.preventDefault();"
-                    ></div>
+                    >
 
-                    <!--
-                        Area trasparente che blocca lo scroll
-                        sulla parte destra inferiore.
-                        La zona in alto a destra rimane cliccabile
-                        per 'Continua senza accettare'.
-                    -->
-                    <div
-                        style="
-                            position:absolute;
-                            right:0;
-                            top:55px;
-                            width:420px;
-                            height:345px;
-                            z-index:10;
-                            background:transparent;
-                        "
-                        onwheel="event.preventDefault();"
-                        ontouchmove="event.preventDefault();"
-                    ></div>
+                        <iframe
+                            src="https://www.fantapazz.com/fantacalcio/fantaclassifiche-competizione/339709/1?gironeSelected=1"
+                            scrolling="no"
+                            style="
+                                width: 1200px;
+                                height: 1000px;
+                                position: absolute;
+                                top: -235px;
+                                left: -200px;
+                                border: none;
+                            ">
+                        </iframe>
+
+                        <!--
+                            Area trasparente che blocca lo scroll
+                            sulla parte sinistra della classifica.
+                        -->
+                        <div
+                            style="
+                                position:absolute;
+                                left:0;
+                                top:0;
+                                width:560px;
+                                height:100%;
+                                z-index:10;
+                                background:transparent;
+                            "
+                            onwheel="event.preventDefault();"
+                            ontouchmove="event.preventDefault();"
+                        ></div>
+
+                        <!--
+                            Area trasparente che blocca lo scroll
+                            sulla parte destra inferiore.
+                            La zona in alto a destra rimane cliccabile
+                            per 'Continua senza accettare'.
+                        -->
+                        <div
+                            style="
+                                position:absolute;
+                                right:0;
+                                top:55px;
+                                width:420px;
+                                height:345px;
+                                z-index:10;
+                                background:transparent;
+                            "
+                            onwheel="event.preventDefault();"
+                            ontouchmove="event.preventDefault();"
+                        ></div>
+
+                    </div>
 
                 </div>
 
             </div>
+
+            <script>
+                (function () {
+
+                    const FANTAPAZZ_BASE_WIDTH = 980;
+                    const FANTAPAZZ_BASE_HEIGHT = 400;
+
+                    function ridimensionaFantapazz() {
+
+                        const viewport =
+                            document.getElementById("fantapazz-responsive-viewport");
+
+                        const stage =
+                            document.getElementById("fantapazz-responsive-stage");
+
+                        if (!viewport || !stage) {
+                            return;
+                        }
+
+                        const larghezzaDisponibile = viewport.clientWidth;
+
+                        /*
+                            Se CLASSIFICHE è temporaneamente nascosto,
+                            clientWidth può essere 0. In quel caso aspettiamo
+                            il prossimo ResizeObserver / cambio pagina.
+                        */
+                        if (larghezzaDisponibile <= 0) {
+                            return;
+                        }
+
+                        const scala = Math.min(
+                            1,
+                            larghezzaDisponibile / FANTAPAZZ_BASE_WIDTH
+                        );
+
+                        stage.style.transform =
+                            "scale(" + scala + ")";
+
+                        viewport.style.height =
+                            (FANTAPAZZ_BASE_HEIGHT * scala) + "px";
+                    }
+
+
+                    /*
+                        Adattamento iniziale e quando cambia la dimensione
+                        della finestra / orientamento del telefono.
+                    */
+                    window.addEventListener(
+                        "resize",
+                        ridimensionaFantapazz
+                    );
+
+                    window.addEventListener(
+                        "orientationchange",
+                        function () {
+                            setTimeout(
+                                ridimensionaFantapazz,
+                                150
+                            );
+                        }
+                    );
+
+
+                    /*
+                        ResizeObserver rende l'adattamento automatico anche
+                        quando il pannello CLASSIFICHE passa da nascosto
+                        a visibile.
+                    */
+                    if ("ResizeObserver" in window) {
+
+                        const viewport =
+                            document.getElementById(
+                                "fantapazz-responsive-viewport"
+                            );
+
+                        if (viewport) {
+
+                            const fantapazzResizeObserver =
+                                new ResizeObserver(
+                                    ridimensionaFantapazz
+                                );
+
+                            fantapazzResizeObserver.observe(
+                                viewport
+                            );
+                        }
+                    }
+
+
+                    /*
+                        Ulteriore controllo quando viene attivata la pagina
+                        CLASSIFICHE tramite il menu.
+                    */
+                    const paginaClassifica =
+                        document.getElementById("classifica");
+
+                    if (paginaClassifica) {
+
+                        const fantapazzMutationObserver =
+                            new MutationObserver(
+                                function () {
+                                    requestAnimationFrame(
+                                        ridimensionaFantapazz
+                                    );
+                                }
+                            );
+
+                        fantapazzMutationObserver.observe(
+                            paginaClassifica,
+                            {
+                                attributes: true,
+                                attributeFilter: ["class"]
+                            }
+                        );
+                    }
+
+
+                    if (document.readyState === "loading") {
+
+                        document.addEventListener(
+                            "DOMContentLoaded",
+                            ridimensionaFantapazz
+                        );
+
+                    } else {
+
+                        ridimensionaFantapazz();
+                    }
+
+                })();
+            </script>
 
             <div class="classifica-updated">
                 Ultimo aggiornamento: <span id="campionato-update-date"></span>
